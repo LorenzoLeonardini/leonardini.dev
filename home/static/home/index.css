@@ -1,0 +1,317 @@
+body {
+	background: #f3f4f6;
+}
+
+.top-line {
+	height: 6px;
+}
+
+#top-section {
+	height: 650px;
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+
+#top-section img {
+	height: 100%;
+}
+
+.clear-section {
+	background: #f9f9f9;
+	border-top: solid 1px #f0f1f3;
+	border-bottom: solid 1px #f0f1f3;
+}
+
+.gradient, .cc-banner, .cc-grower {
+	background: linear-gradient(45deg, #bbb3ff, #a8f4a9);
+}
+
+h1 {
+	color: #232;
+	font-family: 'Signika Negative';
+	font-size: 4.25rem;
+	font-weight: bold;
+	margin-bottom: 0px;
+	line-height: 4.5rem
+}
+
+h2 {
+	color: #232323;
+	font-family: 'Signika Negative';
+	font-size: 3rem;
+	font-weight: 300;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+#credits {
+	text-align: center;
+}
+
+#credits h2 {
+	font-size: 1.8rem;
+	margin-top: 4px;
+	margin-bottom: 10px;
+}
+
+#credits a {
+	text-decoration: underline;
+	color: #232323;
+	font-size: 14px;
+}
+
+#credits a:hover {
+	text-decoration: none;
+}
+
+h3 {
+	font-family: 'Source Sans Pro';
+	font-size: 1rem;
+	font-weight: 400;
+	color: #232;
+	text-transform: uppercase;
+	margin-left: 4px;
+	margin-top: 5px;
+}
+
+#contact-banner {
+	height: 190px;
+	padding: 45px auto;
+}
+
+#contact-banner #contact-btn {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+#contact-banner #contact-btn a {
+	border-width: 2px;
+	border-radius: 100px;
+	padding: 16px 48px;
+	font-size:16px;
+	font-family: 'Source Sans Pro';
+}
+
+#contact-banner #contact-text {
+	margin-top: auto;
+	margin-bottom: auto;
+	text-align:right;
+}
+
+#contact-banner #contact-text span {
+	text-transform: uppercase;
+	font-family: 'Source Sans Pro';
+	font-size: 3rem;
+	font-weight: semi-bold;
+	color: rgb(35, 35, 35);
+}
+
+.btn-outline-dark {
+	color: rgb(51, 51, 51) !important;
+	border-color: rgb(51, 51, 51) !important;
+	outline: 0 !important;
+}
+
+.btn-outline-dark:hover {
+	background: rgb(51, 51, 51) !important;
+	color: white !important;
+}
+
+.custom-col {
+	margin: 0 auto;
+}
+
+.custom-col img {
+	width: 100%;
+}
+
+.clear-section .container a {
+	display: inline-block;
+	color: inherit;
+	text-decoration: inherit;
+}
+
+.custom-col h4 {
+	font-size: 1.5rem;
+	font-family: 'Signika Negative';
+	margin: 28px 0 14px 0;
+}
+
+.custom-col p {
+	font-size: 1.2rem;
+	font-family: 'Source Sans Pro';
+}
+
+ul {
+	padding: 0 10px 0 30px;
+}
+
+ul li, #contacts p {
+	color: #232323;
+	font-family: 'Source Sans Pro';
+	font-size: 1.2rem;
+	margin-bottom: 16px;
+}
+
+#contacts p {
+	margin-top: -10px;
+	margin-bottom: 50px;
+}
+
+.img-list {
+	-webkit-columns: auto 3; /* Chrome, Safari, Opera */
+	-moz-columns: auto 3; /* Firefox */
+	columns: auto 3;
+	color: #232323;
+	font-family: 'Source Sans Pro';
+	font-size: 1.2rem;
+	vertical-align: top;
+}
+
+.img-list .row {
+	padding: 10px 0;
+}
+
+.img-list .row img {
+	width: 100%;
+}
+
+.img-list .row .col-2 {
+	padding: 6px;
+}
+
+.img-list .row .col-5 {
+	padding-right: 0;
+	margin-top: auto;
+	margin-bottom: auto;
+	font-family: 'Signika Negative';
+}
+
+.img-list button {
+	border-width: 2px;
+	border-radius: 100px;
+	padding: 8px 70px;
+	font-size: 18px;
+	font-weight: bold;
+	font-family: 'Source Sans Pro';
+}
+
+#showMobile {
+	display: none;
+}
+
+@media screen and (max-width: 991px) {
+	.img-list {
+		-webkit-columns: auto 2; /* Chrome, Safari, Opera */
+		-moz-columns: auto 2; /* Firefox */
+		columns: auto 2;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.img-list {
+		-webkit-columns: auto 1; /* Chrome, Safari, Opera */
+		-moz-columns: auto 1; /* Firefox */
+		columns: auto 1;
+	}
+
+	div#hiddenMobile {
+		display: none;
+	}
+
+	#showMobile {
+		display: flex;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	h1 {
+		font-size: 3.5rem;
+		line-height: 3.5rem;
+	}
+
+	#top-section {
+		height: auto;
+		margin-top: 30px;
+		margin-bottom: 40px;
+	}
+
+	#top-section div {
+		height: auto;
+	}
+
+	#top-section img {
+		height: auto;
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	#contact-banner, #contact-banner>div>div {
+		height: auto !important;
+	}
+
+	#contact-banner div.col-lg-1 {
+		height: 30px;
+	}
+
+	#contact-banner #contact-btn, #contact-banner #contact-text {
+		text-align: center;
+		margin: 15px 0;
+	}
+
+	#contact-banner #contact-text span {
+		font-size: 2.2rem;
+		margin-bottom: 0;
+	}
+
+	h2 {
+		font-size: 2.5rem;
+	}
+}
+
+
+
+#CookielawBanner {
+    padding: 20px 0 15px 0;
+	color: #232323;
+}
+
+#CookielawBanner h6 {
+	font-size: 1.2rem;
+	text-align: center;
+	font-weight: bold;
+}
+
+#CookielawBanner .container {
+    position: relative;
+}
+
+#CookielawBanner #CookielawCross {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+#CookielawBanner #CookielawCross a {
+	color: inherit;
+	font-size: 18px;
+}
+
+#CookielawBanner .cookie-buttons {
+	margin-top: 6px;
+	text-align: center;
+}
+
+#g-recaptcha-response {
+    display: block !important;
+    position: absolute;
+    margin: -78px 0 0 0 !important;
+    width: 302px !important;
+    height: 76px !important;
+    z-index: -999999;
+    opacity: 0;
+}

@@ -1,0 +1,371 @@
+<html>
+<head>
+	{% load staticfiles %}
+	<title>Lorenzo Leonardini</title>
+	<!-- SEO -->
+	<meta name="description" content="Profile page of a self-taught developer. Portfolio, skills and contacts">
+	<link rel="canonical" href="https://www.leonardini.dev">
+	<meta name="robots" content="index, follow">
+	<!-- Open Graph -->
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Lorenzo Leonardini">
+	<meta property="og:description" content="Profile page of a self-taught developer. Portfolio, skills and contacts">
+	<meta property="og:image" content="{% static 'home/images/person.jpeg' %}">
+	<meta property="og:url" content="https://www.leonardini.dev">
+	<meta property="og:site_name" content="Lorenzo Leonardini">
+	<!-- Twitter Cards -->
+	<meta property="twitter:title" content="Lorenzo Leonardini">
+	<meta property="twitter:description" content="Profile page of a self-taught developer. Portfolio, skills and contacts">
+	<meta property="twitter:image" content="{% static 'home/images/person.jpeg' %}">
+	<meta property="twitter:url" content="https://www.leonardini.dev">
+	<meta property="twitter:creator" content="@_lorenzo_leo">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://kit.fontawesome.com/af4330bf1d.js" async></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Signika+Negative:300,400,700|Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'home/index.css' %}" type="text/css">
+	<link rel="shortcut icon" href="{% static 'home/favicon.ico' %}" />
+	<meta name="theme-color" content="#abccd7" />
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143781594-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-143781594-1');
+	</script>
+
+    <link async rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    <script async src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+    <script>
+        window.addEventListener("load", function(){
+            window.cookieconsent.initialise({
+				palette: {
+					popup: { text: "#232323" },
+					button: { background: "#28a745", text: "#ffffff" }
+				},
+				theme: "classic",
+				position: "top",
+				static: true,
+				cookie: {
+					name: 'leonardini_dev_cookie_status',
+					domain: 'leonardini.dev',
+					path: '/'
+				}
+            })
+        });
+    </script>
+
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+	<div class="container-fluid top-line gradient">
+	</div>
+
+	<section>
+		<div class="container" id="top-section">
+			<div class="row">
+				<div class="col-12 col-lg-6" style="margin-top: auto; margin-bottom: auto;">
+					<h1>Lorenzo<br />Leonardini</h1>
+					<h3>Developer</h3>
+				</div>
+				<div class="col-12 col-lg-6">
+					<img src="{% static 'home/images/person.jpeg' %}">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="contact-banner" class="gradient">
+		<div class="container">
+			<div class="row h-100">
+				<div class="col-12 col-lg-1"></div>
+				<div class="col-12 col-lg-5" id="contact-btn">
+					<a class="btn btn-outline-dark" href="#contacts">SEND ME A MESSAGE</a>
+				</div>
+				<div class="col-12 col-lg-5" id="contact-text">
+					<span>Contact me</span>
+				</div>
+				<div class="col-12 col-lg-1"></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="clear-section">
+		<div class="container" style="padding-top: 60px; padding-bottom: 60px;">
+			<h2>My Works</h2>
+
+			<div class="row">
+				<div class="col-lg-4 col-md-6 custom-col">
+					<div><img src="{% static 'home/images/felpe-sm-sm.jpg' %}"></div>
+					<h4>Web platforms</h4>
+					<p>
+						Development of web platform for various scopes, such as school events and school merchandise (t-shirts and sweaters orders).
+					</p>
+				</div>
+
+				<a target="_blank" href="https://music.leonardini.dev" class="col-lg-4 col-md-6 custom-col">
+				<div>
+					<div><img src="{% static 'home/images/music-sm-sm.jpg' %}"></div>
+					<h4>Music</h4>
+					<p>
+						After years of playing musical instruments, recently I've started working on composing my personal stuff.
+					</p>
+				</div>
+				</a>
+
+				<a target="_blank" href="https://blog.leonardini.dev" class="col-lg-4 col-md-6 custom-col">
+				<div>
+					<div><img src="{% static 'home/images/blog-sm-sm.jpg' %}"></div>
+					<h4>Blogging</h4>
+					<p>
+						Writing posts for my blog in my spare time, sharing my projects and ideas.
+					</p>
+				</div>
+				</a>
+			</div>
+
+			<div class="row">
+				<div class="col">
+					<center style="padding-top: 40px;">
+						<a class="btn btn-outline-dark" style="font-size: 22px; margin: 5px; cursor: pointer;" href="https://github.com/LorenzoLeonardini" target="_blank"><i class="fab fa-github"></i>&nbsp; GitHub Profile</a>
+						<a class="btn btn-outline-dark" style="font-size: 22px; margin: 5px; cursor: pointer;" href="https://linkedin.com/in/lorenzoleonardini" target="_blank"><i class="fab fa-linkedin"></i>&nbsp; LinkedIn Profile</a>
+					</center>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="container" style="padding-top: 50px; padding-bottom: 60px;">
+			<h2>My Background</h2>
+
+			<div class="row">
+				<div class="col-12 col-lg-2"></div>
+				<div class="col-12 col-lg-8">
+					<ul>
+						<li><strong>Liceo Scientifico G.D. Cassini, 2013-2019</strong> - Proper high school education is important, that's why I've attended a standard scientific high school in Genoa, to learn good maths for my future.</li>
+						<li><strong>CyberChallenge.IT, 2018</strong> - Italian initiative to introduce young students to the field of cyber security. I've had the chance to join the Italian team in London for the European Cyber Security Challenge.</li>
+						<li><strong>Programming competitions</strong> - Participant in different competitive programming competitions, such as the Italian Olympiad in Informatics (OII) and the Reply Code Challenge.</li>
+						<li><strong>Self-teaching, always</strong> - Excluding some rare opportunities, I've always studied programming and computer science as a self-taught person. This led to a good problem solving skill when facing different issues.</li>
+					</ul>
+				</div>
+				<div class="col-12 col-lg-2"></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="gradient">
+		<div class="container" style="padding-top: 60px; padding-bottom: 50px;">
+			<h2>Knowledge (self-taught level):</h2>
+
+			<div class="img-list">
+					<div class="row justify-content-center">
+						<div class="col-1"></div>
+						<div class="col-2"><img src="{% static 'home/images/html.svg' %}"></div>
+						<div class="col-5">HTML 5</div>
+					</div>
+					<div class="row justify-content-center">
+						<div class="col-1"></div>
+						<div class="col-2"><img src="{% static 'home/images/css.svg' %}"></div>
+						<div class="col-5">CSS 3</div>
+					</div>
+					<div class="row justify-content-center">
+						<div class="col-1"></div>
+						<div class="col-2"><img src="{% static 'home/images/js.svg' %}"></div>
+						<div class="col-5">JavaScript</div>
+					</div>
+					<div class="row justify-content-center">
+						<div class="col-1"></div>
+						<div class="col-2"><img src="{% static 'home/images/php.svg' %}"></div>
+						<div class="col-5">PHP</div>
+					</div>
+
+					<div id="hiddenMobile">
+						<div class="row justify-content-center">
+							<div class="col-1"></div>
+							<div class="col-2"><img src="{% static 'home/images/java.svg' %}"></div>
+							<div class="col-5">Java 7</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-1"></div>
+							<div class="col-2"><img src="{% static 'home/images/go.svg' %}"></div>
+							<div class="col-5">Go (basics)</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-1"></div>
+							<div class="col-2"><img src="{% static 'home/images/python.svg' %}"></div>
+							<div class="col-5">Python</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-1"></div>
+							<div class="col-2"><img src="{% static 'home/images/c.svg' %}"></div>
+							<div class="col-5">C</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-1"></div>
+							<div class="col-2"><img src="{% static 'home/images/c++.svg' %}"></div>
+							<div class="col-5">C++</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-1"></div>
+							<div class="col-2"><img src="{% static 'home/images/c#.svg' %}"></div>
+							<div class="col-5">C# (basics)</div>
+						</div>
+					</div>
+					<br />
+					<div class="row justify-content-center" id="showMobile">
+						<button class="btn btn-outline-dark">...</button>
+					</div>
+
+					<script>
+						document.getElementById("showMobile").onclick = function() {
+							document.getElementById("showMobile").style.display = "none";
+							document.getElementById("hiddenMobile").style.display = "block";
+						}
+					</script>
+			</div>
+		</div>
+	</section>
+
+	<section class="clear-section" id="contacts">
+		<div class="container" style="padding-top: 60px; padding-bottom: 60px;">
+			<h2>Contact Me</h2>
+
+			<div class="row">
+				<div class="col-12 col-lg-2"></div>
+				<div class="col-12 col-lg-8">
+					<p>
+						For more detailed information about my skills and knowledge, or to request for a proper CV, do not hesitate on contacting me.<br />
+						Also, feel free to get in touch for job or project proposals.
+					</p>
+
+
+					<form action="{% url 'home:contact' %}" method="post" id="contactForm">
+						{% csrf_token %}
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="inputName">Your name<span class="text-danger">*</span></label>
+								<input type="text" class="form-control" id="inputName" name="name" placeholder="John Smith" required>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="inputEmail">Your email<span class="text-danger">*</span></label>
+								<input type="email" class="form-control" id="inputEmail" name="email" placeholder="john@smith.dw" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputCompany">Your company (if applicable)</label>
+							<input type="text" class="form-control" id="inputCompany" name="company" placeholder="Tech Inc.">
+						</div>
+						<div class="form-group">
+							<label for="inputReason">Reason of contact<span class="text-danger">*</span></label>
+							<select id="inputReason" class="form-control" name="reason" required>
+								<option selected disabled value="">Choose...</option>
+								<option value="1">I want to know you better (C.V., full porfolio...)</option>
+								<option value="2">Regarding one of your projects</option>
+								<option value="3">Job proposal</option>
+								<option value="4">Other</option>
+								<option value="5">I'm bored</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="inputMessage">Message<span class="text-danger">*</span></label>
+							<textarea class="form-control" id="inputMessage" name="message" rows=5 placeholder="Hey! &#10;How is it goin'?" required></textarea>
+						</div>
+						<div class="form-group">
+							<div class="g-recaptcha" data-sitekey="6Ldmmq0UAAAAAKo_itMVEoSc_7QdRVphgeymDTmC"></div>
+						</div>
+						<script>
+							window.onload = function() {
+								let recaptcha = document.querySelector('#g-recaptcha-response')
+
+								if (recaptcha) {
+									recaptcha.setAttribute('required', 'required')
+								}
+							}
+						</script>
+						<button type="submit" class="btn btn-primary">Send</button>
+					</form>
+
+					<script>
+						document.getElementById("contactForm").onsubmit = function() {
+							let f = document.getElementById("contactForm")
+
+							parameters = "csrfmiddlewaretoken=" + encodeURIComponent(f.elements["csrfmiddlewaretoken"].value) +
+											"&name=" + encodeURIComponent(f.elements["name"].value) +
+											"&email=" + encodeURIComponent(f.elements["email"].value) + 
+											"&company=" + encodeURIComponent(f.elements["company"].value) + 
+											"&reason=" + encodeURIComponent(f.elements["reason"].value) + 
+											"&message=" + encodeURIComponent(f.elements["message"].value) + 
+											"&g-recaptcha-response=" + encodeURIComponent(f.elements["g-recaptcha-response"].value);
+
+							let xhttp = new XMLHttpRequest();
+							xhttp.onreadystatechange = function() {
+								if (this.readyState === 4 && this.status === 200) {
+									let response = JSON.parse(xhttp.responseText);
+									if (response.success) {
+										document.getElementById("contactForm").innerHTML = `
+					<div class="alert alert-success" style="font-family: 'Source Sans Pro'; font-size: 1.1rem;">
+						<br />
+						<center>
+							<div class="h1"><i class="far fa-check-circle"></i></div>
+							<div class="h4">Success!</div>
+						</center>
+						<div class="container">
+							Your message has been sent! I will reply as soon as possible, usually in a few days (unless I'm on holiday :\)
+						</div>
+						<br />
+					</div>`;
+									} else {
+										document.getElementById("contactForm").innerHTML = `
+					<div class="alert alert-danger" style="font-family: 'Source Sans Pro'; font-size: 1.1rem;">
+						<br />
+						<center>
+							<div class="h1"><i class="fas fa-bug"></i></div>
+							<div class="h4">Oops...</div>
+						</center>
+						<div class="container">
+							Some kind of error happened and your message couldn't be delivered. Please try again.
+						</div>
+						<br />
+					</div>`;
+									}
+								}
+							}
+							xhttp.open("POST", "{% url 'home:contact' %}", true);
+							xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+							xhttp.send(parameters);
+
+							return false;
+						}
+					</script>
+
+				</div>
+				<div class="col-12 col-lg-2"></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="gradient">
+		<div class="container" style="padding-top: 10px; padding-bottom: 10px;" id="credits">
+			<h2>Credits</h2>
+
+			<a target="_blank" href="https://www.anthonyboyd.graphics/mockup-archive">Mockups by anthonyboyd.graphics</a><br />
+			<a target="_blank" href="https://www.freepik.com/free-photos-vectors/computer">Computer psd created by rawpixel.com - www.freepik.com</a><br />
+			<a target="_blank" href="https://firmbee.com">Mockups by firmbee.com</a><br />
+			<a target="_blank" href="https://mobirise.com/bootstrap-template/personal-website-template/">Page design freely inspired by mobirise.com</a><br />
+		</div>
+	</section>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

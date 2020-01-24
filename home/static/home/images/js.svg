@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="300"
+   height="300"
+   viewBox="0 0 79.374998 79.375002"
+   version="1.1"
+   id="svg8"
+   inkscape:export-filename="/home/pianka/things/brontosauro/leonardini.dev/home/static/home/images/css.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   sodipodi:docname="js.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.86333335"
+     inkscape:cx="88.440764"
+     inkscape:cy="100.63853"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g1158"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1366"
+     inkscape:window-height="703"
+     inkscape:window-x="0"
+     inkscape:window-y="29"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Layer 1">
+    <g
+       id="g1158"
+       transform="scale(0.12599206)">
+      <path
+         style="fill:#f7df1e;fill-opacity:1;stroke-width:0.47619048"
+         d="M 0 0 L 0 300 L 300 300 L 300 0 L 0 0 z M 228.33398 136.13867 C 246.25779 136.13867 259.14202 142.37565 268.42773 158.70898 L 246.47656 172.80469 C 241.64323 164.13802 236.42922 160.72461 228.33398 160.72461 C 220.07684 160.72461 214.84375 165.96183 214.84375 172.80469 C 214.84375 181.26183 220.08054 184.68573 232.17578 189.92383 L 239.22461 192.94336 C 263.17699 203.21479 276.69922 213.68566 276.69922 237.22852 C 276.69922 262.60947 256.76252 276.51367 229.98633 276.51367 C 203.80538 276.51367 186.89142 264.03793 178.61523 247.68555 L 201.52344 234.37695 C 207.56629 244.24362 215.42922 251.49609 229.33398 251.49609 C 241.01494 251.49609 248.47656 245.65651 248.47656 237.58984 C 248.47656 227.92318 240.81027 224.50076 227.95312 218.87695 L 220.9043 215.85156 C 200.56144 207.1849 187.04687 196.32933 187.04688 173.37695 C 187.04688 152.2341 203.15779 136.13867 228.33398 136.13867 z M 135.18555 137.74805 L 163.37695 137.74805 L 163.37695 233.98633 C 163.37695 263.1768 146.2622 276.46094 121.28125 276.46094 C 98.709822 276.46094 85.637853 264.77998 78.990234 250.71094 L 101.9375 236.81836 C 106.36607 244.6755 110.39436 251.31836 120.08008 251.31836 C 129.34198 251.31836 135.18555 247.69594 135.18555 233.60547 L 135.18555 137.74805 z "
+         transform="scale(2.1000001)"
+         id="rect1144"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+    </g>
+  </g>
+</svg>
