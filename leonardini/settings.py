@@ -25,7 +25,7 @@ SECRET_KEY = 'in=7w5&t8!(&zxw%2zy(-7_-+elm-%b+m0d0f&*y#9r19yqj$l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['leonardini-django-dev.eu-west-2.elasticbeanstalk.com', 'localhost']
+ALLOWED_HOSTS = ['leonardini.dev', 'localhost']
 
 
 # Application definition
