@@ -159,7 +159,9 @@
 
 		const releaseTime = ktv(knobs.release.rotation) + 0.01;
 		const gain = audio.oscillators[note].gain;
-		gain.gain.setValueAtTime(gain.gain.value, audio.context.currentTime);
+		const current_gain = gain.gain.value;
+		audio.oscillators[note].gain.gain.cancelScheduledValues(audio.context.currentTime);
+		gain.gain.setValueAtTime(current_gain, audio.context.currentTime);
 		gain.gain.linearRampToValueAtTime(0, audio.context.currentTime + releaseTime);
 		audio.oscillators[note].playing = false;
 	}
