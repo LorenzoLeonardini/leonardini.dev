@@ -1,0 +1,17 @@
+{
+  "name": "@example/starter",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "astro dev",
+    "build": "astro build"
+  },
+  "devDependencies": {
+    "@astrojs/renderer-svelte": "^0.1.1",
+    "astro": "^0.17.2"
+  },
+  "dependencies": {
+    "typescript": "^4.3.5",
+    "web-midi-api": "^2.1.1"
+  }
+}
