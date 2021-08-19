@@ -36,6 +36,8 @@
 		context :AudioContext,
 		masterVolume :GainNode,
 		filter :BiquadFilterNode,
+		lfo :OscillatorNode,
+		lfoGain :GainNode,
 		oscillators :{
 			[note :string] :{
 				gain :GainNode,
@@ -50,6 +52,8 @@
 		context: null,
 		masterVolume: null,
 		filter: null,
+		lfo: null,
+		lfoGain: null,
 		oscillators: {}
 	};
 
@@ -75,6 +79,13 @@
 				return;
 			}
 			stopNote(note_name + octave);
+		} else if((command >> 4) === 0xb) {
+			channel = command - 0xb0;
+			if(midi_channel !== -1 && midi_channel !== channel) {
+				return;
+			}
+			const value = message.data[2];
+			audio.lfoGain.gain.value = value * 10 / 127;
 		}
 	}
 
@@ -95,10 +106,12 @@
 
 			const saw_oscillator = audio.context.createOscillator();
 			saw_oscillator.frequency.setValueAtTime(frequency, 0);
+			audio.lfoGain.connect(saw_oscillator.frequency);
 			saw_oscillator.type = 'sawtooth';
 
 			const triangle_oscillator = audio.context.createOscillator();
 			triangle_oscillator.frequency.setValueAtTime(frequency, 0);
+			audio.lfoGain.connect(triangle_oscillator.frequency);
 			triangle_oscillator.type = 'triangle';
 
 			saw_oscillator.connect(saw);
@@ -179,6 +192,15 @@
 
 		audio.masterVolume.connect(audio.filter);
 		audio.filter.connect(audio.context.destination);
+
+		audio.lfoGain = audio.context.createGain();
+		audio.lfoGain.gain.value = 0;
+
+		audio.lfo = audio.context.createOscillator();
+		audio.lfo.type = 'sine';
+		audio.lfo.frequency.setValueAtTime(10, 0);
+		audio.lfo.connect(audio.lfoGain);
+		audio.lfo.start();
 	}
 
 	function setUp() {
