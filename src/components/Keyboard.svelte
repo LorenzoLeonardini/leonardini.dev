@@ -1,23 +1,188 @@
-<script>
+<script lang="ts">
 	import { onMount } from 'svelte';
 
 	const notes = [ 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B' ];
+	const _12th_root = Math.pow(2, 1/12);
 
-	let midi_devices = [];
+	let midi_devices :Array<WebMidi.MIDIInput> = [];
+	let midi_channel :number = -1;
+	let midi_device :WebMidi.MIDIInput = null;
+	let old_midi_device :WebMidi.MIDIInput ;
 	let midi_enabled = true;
-	let midiAccess = null
+	let midiAccess :WebMidi.MIDIAccess = null;
 
-	let imported = false;
-
-	function findDevices() {
-		midi_devices = [];
-		const inputs = midiAccess.inputs;
-		for(let input of inputs.values()) {
-			midi_devices = [...midi_devices, input.name];
+	$: {
+		console.log(`Selected ${midi_device?.name}`);
+		if(old_midi_device != null) {
+			console.log(`Deselected ${old_midi_device?.name}`);
+			old_midi_device.onmidimessage = null;
+		}
+		if(midi_device) {
+			old_midi_device = midi_device;
+			midi_device.onmidimessage = decodeMIDI;
 		}
 	}
 
+	$: {
+		if(audio.filter != null) {
+			audio.filter.frequency.value = 40 + ktv(knobs.cutoff.rotation) * 20000;
+			audio.filter.Q.value = ktv(knobs.resonance.rotation) * 50 + 1;
+		}
+	}
+
+	let imported = false;
+
+	const audio :{
+		context :AudioContext,
+		masterVolume :GainNode,
+		filter :BiquadFilterNode,
+		oscillators :{
+			[note :string] :{
+				gain :GainNode,
+				saw_gain :GainNode,
+				triangle_gain :GainNode,
+				saw :OscillatorNode,
+				triangle :OscillatorNode,
+				playing :boolean
+			}
+		}
+	} = {
+		context: null,
+		masterVolume: null,
+		filter: null,
+		oscillators: {}
+	};
+
+	// Knob to value
+	const ktv = (value :number) => (value + 132) / 264;
+
+	function decodeMIDI(message) {
+		const command = message.data[0];
+		const note = message.data[1];
+		const octave = Math.floor((note - 60 + (4 * 12)) / 12);
+		const note_name = notes[((note % 12) + 12) % 12];
+
+		let channel :number;
+		if((command >> 4) === 0x9) {
+			channel = command - 0x90;
+			if(midi_channel !== -1 && midi_channel !== channel) {
+				return;
+			}
+			playNote(note_name + octave);
+		} else if((command >> 4) === 0x8) {
+			channel = command - 0x80;
+			if(midi_channel !== -1 && midi_channel !== channel) {
+				return;
+			}
+			stopNote(note_name + octave);
+		}
+	}
+
+	function playNote(note :string) : void {
+		if(audio.context == null) {
+			setupAudioContext();
+		}
+
+		if(!(note in audio.oscillators)) {
+			const octave = parseInt(note[note.length - 1]);
+			const idx = notes.indexOf(note.substr(0, note.length - 1));
+			const position = idx + 12 * octave;
+			const frequency = 440 * Math.pow(_12th_root, position - (9 + 12 * 4));
+
+			const gain = audio.context.createGain();
+			const saw = audio.context.createGain();
+			const triangle = audio.context.createGain();
+
+			const saw_oscillator = audio.context.createOscillator();
+			saw_oscillator.frequency.setValueAtTime(frequency, 0);
+			saw_oscillator.type = 'sawtooth';
+
+			const triangle_oscillator = audio.context.createOscillator();
+			triangle_oscillator.frequency.setValueAtTime(frequency, 0);
+			triangle_oscillator.type = 'triangle';
+
+			saw_oscillator.connect(saw);
+			saw_oscillator.start();
+
+			triangle_oscillator.connect(triangle);
+			triangle_oscillator.start();
+
+			saw.connect(gain);
+			triangle.connect(gain);
+
+			gain.connect(audio.masterVolume);
+
+			audio.oscillators[note] = {
+				gain: gain,
+				triangle_gain: triangle,
+				triangle: triangle_oscillator,
+				saw_gain: saw,
+				saw: saw_oscillator,
+				playing: true
+			};
+		}
+
+		const sustainLevel = ktv(knobs.sustain.rotation);
+		const attackTime = ktv(knobs.attack.rotation) + 0.01;
+		const decayTime = ktv(knobs.decay.rotation) + 0.01;
+		const sawLevel = ktv(knobs.saw.rotation);
+		const triangleLevel = ktv(knobs.triangle.rotation);
+
+		audio.oscillators[note].triangle_gain.gain.value = triangleLevel;
+		audio.oscillators[note].saw_gain.gain.value = sawLevel;
+
+		audio.oscillators[note].gain.gain.cancelScheduledValues(audio.context.currentTime);
+		audio.oscillators[note].gain.gain.value = 0;
+		audio.oscillators[note].gain.gain.linearRampToValueAtTime(sustainLevel, audio.context.currentTime + attackTime);
+		audio.oscillators[note].gain.gain.linearRampToValueAtTime(sustainLevel - 0.05, audio.context.currentTime + attackTime + decayTime);
+
+		audio.oscillators[note].playing = true;
+	}
+	
+	function stopNote(note :string) : void {
+		if(!(note in audio.oscillators)) {
+			return;
+		}
+
+		const releaseTime = ktv(knobs.release.rotation) + 0.01;
+		const gain = audio.oscillators[note].gain;
+		gain.gain.setValueAtTime(gain.gain.value, audio.context.currentTime);
+		gain.gain.linearRampToValueAtTime(0, audio.context.currentTime + releaseTime);
+		audio.oscillators[note].playing = false;
+	}
+
+	function findDevices() : void {
+		midi_devices = [];
+		const inputs = midiAccess.inputs;
+		for(let input of inputs.values()) {
+			midi_devices = [...midi_devices, input];
+		}
+		if(midi_devices.length > 0) {
+			midi_device = midi_devices[0];
+		}
+	}
+
+	function setupAudioContext() {
+		if(audio.context != null) return;
+
+		const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
+		audio.context = new AudioContext;
+
+		// Master volume
+		audio.masterVolume = audio.context.createGain();
+
+		// Filter
+		audio.filter = audio.context.createBiquadFilter();
+		audio.filter.type = 'lowpass';
+		audio.filter.frequency.value = 40 + ktv(knobs.cutoff.rotation) * 20000;
+		audio.filter.Q.value = ktv(knobs.resonance.rotation) * 50 + 1;
+
+		audio.masterVolume.connect(audio.filter);
+		audio.filter.connect(audio.context.destination);
+	}
+
 	function setUp() {
+		/* ------------ Setting up MIDI ------------ */
 		if(navigator.requestMIDIAccess) {
 			console.log('Browser supports WebMIDI');
 			navigator.requestMIDIAccess().then((_midiAccess) => {
@@ -31,6 +196,7 @@
 		} else {
 			console.log('WebMIDI not supported on this browser');
 			if(!imported) {
+				// @ts-ignore: import generates error for no reason
 				import('/WebMIDIAPI.min.js').then(module => {
 					imported = true;
 					setUp();
@@ -39,44 +205,51 @@
 				});
 			}
 		}
+		/* ------------ Setting up audio context ------------ */
+		document.body.onclick = setupAudioContext;
 	}
 
 	onMount(setUp);
 
-	const knobs = [
-		{
+	const knobs :{
+		[id :string] :{
+			label :string,
+			rotation :number
+		}
+	} = {
+		saw: {
 			label: 'Saw',
 			rotation: -132
 		},
-		{
+		triangle: {
 			label: 'Triang',
 			rotation: -132
 		},
-		{
+		cutoff: {
 			label: 'Cutoff',
 			rotation: -132
 		},
-		{
+		resonance: {
 			label: 'Reson.',
 			rotation: -132
 		},
-		{
+		attack: {
 			label: 'Attack',
 			rotation: -132
 		},
-		{
+		decay: {
 			label: 'Decay',
 			rotation: -132
 		},
-		{
+		sustain: {
 			label: 'Sustain',
 			rotation: -132
 		},
-		{
+		release: {
 			label: 'Release',
 			rotation: -132
 		}
-	]
+	};
 
 	let currentY = 0;
 	function movingKnob(mousemove) {
@@ -84,8 +257,8 @@
 			return;
 		}
 
-		const knob_id = parseInt(mousemove.target.dataset.id);
-		if(knob_id == null || isNaN(knob_id)) return;
+		const knob_id = mousemove.target.dataset.id;
+		if(knob_id == null) return;
 		// Knob Rotation
 		if(mousemove.pageY - currentY !== 0) { 
 			knobs[knob_id].rotation -= (mousemove.pageY - currentY) * 4;
@@ -147,7 +320,8 @@
 	.key.white:hover {
 		background: #e5e5e5;
 	}
-	.key.white:active {
+	.key.white:active,
+	.key.white.active {
 		background: #b0b0b0;
 	}
 
@@ -162,7 +336,8 @@
 	.key.black:hover {
 		background: #151515;
 	}
-	.key.black:active {
+	.key.black:active,
+	.key.black.active {
 		background: #303030;
 	}
 
@@ -205,6 +380,14 @@
 		position: relative;
 		transform: rotate(-132deg);
 		cursor: pointer;
+	}
+
+	.controls, .controls * {
+		-webkit-user-drag: none;
+		-khtml-user-drag: none;
+		-moz-user-drag: none;
+		-o-user-drag: none;
+		user-drag: none;
 	}
 
 	.knob::after {
@@ -360,18 +543,18 @@
 		<div class="midi" class:hidden={!midi_enabled}>
 			Midi device: 
 			<div class="select" on:select={console.log}>
-				<select>
+				<select bind:value={midi_device}>
 					{#if midi_devices.length === 0}
 						<option disabled selected>No device</option>
 					{/if}
-					{#each midi_devices as device}
-						<option value={device}>{device}</option>
+					{#each midi_devices as device, idx}
+						<option value={device}>{device.name}</option>
 					{/each}
 				</select>
 			</div>
 			<div class="select">
-				<select>
-					<option value="-1">Ch all</option>
+				<select bind:value={midi_channel}>
+					<option value={-1}>Ch all</option>
 					{#each [...Array(16).keys()] as i}
 						<option value={i}>Ch {i + 1}</option>
 					{/each}
@@ -385,10 +568,10 @@
 			</div>
 		</div>
 		<div class="controls">
-			{#each knobs as knob, idx}
+			{#each Object.keys(knobs) as idx}
 				<div class="knob-container">
 					<div on:mousedown={(event) => {currentY = event.pageY}} on:mousemove={movingKnob} class="knob" data-id="{idx}"></div>
-					<div class="label">{knob.label}</div>
+					<div class="label">{knobs[idx].label}</div>
 				</div>
 			{/each}
 		</div>
@@ -398,7 +581,11 @@
 					<div class="key"
 						class:white={!note.endsWith('#')}
 						class:black={note.endsWith('#')}
+						class:active={`${note}${octave + 3}` in audio.oscillators && audio.oscillators[`${note}${octave + 3}`].playing}
 						class:mobile-hidden={octave === 2}
+						on:mousedown={() => playNote(`${note}${octave + 3}`)}
+						on:mouseup={() => stopNote(`${note}${octave + 3}`)}
+						on:mouseleave={() => stopNote(`${note}${octave + 3}`)}
 						id="{note}{octave + 3}"></div>
 				{/each}
 			{/each}
