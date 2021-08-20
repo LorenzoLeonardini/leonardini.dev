@@ -231,6 +231,12 @@
 		}
 		/* ------------ Setting up audio context ------------ */
 		document.body.onclick = setupAudioContext;
+
+		/* ------------ Rotating knobs ------------ */
+		for (let id in knobs) {
+			const knob :HTMLElement = document.querySelector(`.knob[data-id="${id}"]`);
+			knob.style.transform=`rotate(${knobs[id].rotation}deg)`;
+		}
 	}
 
 	onMount(setUp);
@@ -243,7 +249,7 @@
 	} = {
 		saw: {
 			label: 'Saw',
-			rotation: -132
+			rotation: -100
 		},
 		triangle: {
 			label: 'Triang',
@@ -251,7 +257,7 @@
 		},
 		cutoff: {
 			label: 'Cutoff',
-			rotation: -132
+			rotation: -66
 		},
 		resonance: {
 			label: 'Reson.',
@@ -267,7 +273,7 @@
 		},
 		sustain: {
 			label: 'Sustain',
-			rotation: -132
+			rotation: 0
 		},
 		release: {
 			label: 'Release',
@@ -402,7 +408,6 @@
 		display: inline-block;
 		margin: 0 12px 10px 12px;
 		position: relative;
-		transform: rotate(-132deg);
 		cursor: pointer;
 	}
 
