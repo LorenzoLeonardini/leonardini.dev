@@ -231,6 +231,7 @@
 		}
 		/* ------------ Setting up audio context ------------ */
 		document.body.onclick = setupAudioContext;
+		document.body.ontouchstart = setupAudioContext;
 
 		/* ------------ Rotating knobs ------------ */
 		for (let id in knobs) {
@@ -654,8 +655,11 @@
 						class:portrait-hidden={octave !== 0 && !(octave === 1 && notes.indexOf(note) < 5)}
 						class:mobile-hidden={octave === 2}
 						on:mousedown={() => playNote(`${note}${octave + 3}`)}
+						on:touchstart|preventDefault={() => playNote(`${note}${octave + 3}`)}
 						on:mouseup={() => stopNote(`${note}${octave + 3}`)}
+						on:touchend|preventDefault={() => stopNote(`${note}${octave + 3}`)}
 						on:mouseleave={() => stopNote(`${note}${octave + 3}`)}
+						on:touchcancel|preventDefault={() => stopNote(`${note}${octave + 3}`)}
 						id="{note}{octave + 3}"></div>
 				{/each}
 			{/each}
