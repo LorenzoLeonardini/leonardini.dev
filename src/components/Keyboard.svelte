@@ -307,10 +307,9 @@
 	@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 	
 	.keyboard-container {
-		height: 320px;
 		width: auto;
 		background: var(--dark);
-		padding: 50px 0;
+		padding: 50px 0 70px 0;
 		text-align: center;
 		position: relative;
 		z-index: 999;
@@ -563,6 +562,47 @@
 	.hidden {
 		display: none;
 	}
+
+	@media screen and (max-width: 700px) {
+		.controls {
+			width: calc(54px * 8);
+			transform: translateY(-4px);
+			margin-right: 0;
+			height: auto;
+		}
+
+		.keyboard-container {
+			padding: 0;
+		}
+
+		.keys-container {
+			height: 138px;
+		}
+
+		.depth {
+			display: none;
+		}
+
+		.keyboard {
+			height: 270px;
+			width: 100%;
+			padding: 40px 10px 20px 10px;
+		}
+	}
+
+	@media screen and (max-width: 700px) and (orientation: portrait) {
+		.knob-container[data-id="resonance"],
+		.knob-container[data-id="triangle"],
+		.knob-container[data-id="decay"],
+		.portrait-hidden,
+		.midi {
+			display: none;
+		}
+
+		.controls {
+			width: calc(54px * 5);
+		}
+	}
 </style>
 
 <div class="keyboard-container">
@@ -598,7 +638,7 @@
 		</div>
 		<div class="controls">
 			{#each Object.keys(knobs) as idx}
-				<div class="knob-container">
+				<div class="knob-container" data-id="{idx}">
 					<div on:mousedown={(event) => {currentY = event.pageY}} on:mousemove={movingKnob} class="knob" data-id="{idx}"></div>
 					<div class="label">{knobs[idx].label}</div>
 				</div>
@@ -611,6 +651,7 @@
 						class:white={!note.endsWith('#')}
 						class:black={note.endsWith('#')}
 						class:active={`${note}${octave + 3}` in audio.oscillators && audio.oscillators[`${note}${octave + 3}`].playing}
+						class:portrait-hidden={octave !== 0 && !(octave === 1 && notes.indexOf(note) < 5)}
 						class:mobile-hidden={octave === 2}
 						on:mousedown={() => playNote(`${note}${octave + 3}`)}
 						on:mouseup={() => stopNote(`${note}${octave + 3}`)}
