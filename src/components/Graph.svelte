@@ -45,8 +45,8 @@
 			container.style.height = `${document.querySelector('.container.ontop').clientHeight}px`;
 		}
 
-		canvas.width = canvas.clientWidth;
-		canvas.height = canvas.clientHeight;
+		canvas.width = Math.floor(canvas.clientWidth * window.devicePixelRatio);
+		canvas.height = Math.floor(canvas.clientHeight * window.devicePixelRatio);
 		width = canvas.width;
 		height = canvas.height;
 
