@@ -1,6 +1,6 @@
 ---
-import Midi from '../components/Midi.svelte';
-import Keyboard from '../components/Keyboard.svelte';
+import Graph from '../components/Graph.svelte';
+import Synth from '../components/Synth.svelte';
 
 let title = 'My Astro Site';
 ---
@@ -19,8 +19,8 @@ let title = 'My Astro Site';
     </style>
 </head>
 <body>
-    <Keyboard client:visible />
-
-    <!-- <Midi client:visible /> -->
+    <Graph client:visible />
+    <Synth client:visible />
+    <div style="height: 200vh; background: linear-gradient(90deg, #f0f0f0 0%, #f0f0f0 50%, #202020 50%, #202020 100%)"></div>
 </body>
 </html>

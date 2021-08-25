@@ -25,3 +25,8 @@
 		display: none !important;
 	}
 }
+
+body {
+	background: #202020;
+	background: linear-gradient(90deg, #202020 0%, #202020 50%, #f0f0f0 50%, #f0f0f0 100%);
+}

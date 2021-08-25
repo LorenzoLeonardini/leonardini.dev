@@ -640,7 +640,12 @@
 		<div class="controls">
 			{#each Object.keys(knobs) as idx}
 				<div class="knob-container" data-id="{idx}">
-					<div on:mousedown={(event) => {currentY = event.pageY}} on:mousemove={movingKnob} class="knob" data-id="{idx}"></div>
+					<div 
+						on:mousedown={(event) => {currentY = event.pageY}} 
+						on:touchstart={(event) => {currentY = event.touches[0].pageY}} 
+						on:mousemove={movingKnob} 
+						on:touchmove={(e) => console.log(e)} 
+						class="knob" data-id="{idx}"></div>
 					<div class="label">{knobs[idx].label}</div>
 				</div>
 			{/each}
