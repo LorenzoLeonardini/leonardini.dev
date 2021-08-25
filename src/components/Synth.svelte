@@ -309,7 +309,7 @@
 	
 	.keyboard-container {
 		width: auto;
-		background: var(--dark);
+		background: var(--darker-blue);
 		padding: 50px 0 70px 0;
 		text-align: center;
 		position: relative;
