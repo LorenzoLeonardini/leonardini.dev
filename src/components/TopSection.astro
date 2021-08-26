@@ -1,0 +1,134 @@
+---
+import Graph from '../components/Graph.svelte';
+---
+<style lang="scss">
+	#top-section {
+		position: relative;
+
+		.container {
+			margin-top: 5vh;
+			margin-bottom: 5vh;
+		}
+
+		.container,
+		.container .right,
+		.container .left {
+			height: 90vh;
+			max-height: 700px;
+		}
+
+		.container {
+			.left .card {
+				display: block;
+				width: 44ch;
+				margin: auto;
+				margin-top: 4em;
+
+				padding: 1.3em 2.5em;
+				
+				background: var(--darker-blue);
+				border: solid 1px rgba(240, 240, 240, .2);
+
+				#name {
+					font-size: 3em;
+					display: block;
+					margin: auto;
+				}
+
+				.info ul {
+					margin-top: 2em;
+					font-size: .9em;
+					list-style-type: none;
+					padding: 0;
+
+					li {
+						margin: .8em 0;
+						color: rgba(240, 240, 240, .6);
+
+						&::before {
+							content: '>';
+							margin-right: .9em;
+						}
+					}
+				}
+			}
+
+			.right #propic {
+				height: 100%;
+				display: block;
+				margin: 0 auto;
+			}
+		}
+	}
+
+	@media screen and (min-height: 778px) {
+		#top-section > .container {
+			margin-top: calc(50vh - 350px);
+			margin-bottom: calc(50vh - 350px);
+		}
+	}
+
+	@media screen and (min-height: 1080px) {
+		#top-section > .container {
+			margin-top: 190px;
+			margin-bottom: 190px;
+		}
+	}
+
+	@media screen and (max-width: 991px) {
+		#top-section > .container {
+			height: auto;
+
+			.right #propic {
+				height: auto;
+				width: 100%;
+				margin-top: 10px;
+			}
+		}
+	}
+
+	@media screen and (max-width: 700px) {
+		#top-section > .container {
+			margin-top: 0;
+			margin-bottom: 0;
+			width: 100%;
+
+			.left .card {
+				width: 100%;
+				border-top: none;
+				border-right: none;
+				border-left: none;
+				margin-top: 0;
+			}
+
+			.right #propic {
+				width: 70%;
+				margin: 18px auto;
+			}
+		}
+	}
+</style>
+
+<section id="top-section">
+	<div class="container">
+		<div class="left">
+			<div class="card" id="info">
+				<h1 id="name">
+					Lorenzo Leonardini
+				</h1>
+				<div class="info">
+					<ul>
+						<li><a href="https://github.com/LorenzoLeonardini" target="_blank">github.com/LorenzoLeonardini</a></li>
+						<li><a href="https://linkedin.com/in/lorenzoleonardini" target="_blank">linkedin.com/in/lorenzoleonardini</a></li>
+						<li><a href="https://twitter.com/_lorenzo_leo" target="_blank">twitter.com/_lorenzo_leo</a></li>
+						<li><span class="blinking cursor"></span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="right">
+			<img id="propic" src="https://leonardini.dev/images/person.jpeg" alt="Lorenzo Leonardini's photograph">
+		</div>
+	</div>
+	<Graph client:visible />
+</section>

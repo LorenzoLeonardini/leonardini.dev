@@ -11,7 +11,6 @@
 	const darkColor = '32,32,32';
 
 	let container :HTMLElement;
-	let placeholder :HTMLElement;
 	let width :number, height :number;
 	let canvas :HTMLCanvasElement;
 	let ctx :CanvasRenderingContext2D;
@@ -60,9 +59,6 @@
 	onMount(() => {
 		let shouldRender = true;
 		
-		container.removeChild(placeholder);
-		canvas.style.display = 'block';
-
 		ctx = canvas.getContext('2d');
 
 		document.body.onresize = resizeHandler;
@@ -160,20 +156,23 @@
 	})
 </script>
 
-<style>
+<style lang="scss">
 	div.graph-container {
-		height: 100vh;
-		max-height: 1080px;
-	}
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
 
-	div.placeholder, canvas#graph {
-		width: 100%;
-		height: 100%;
+		canvas#graph {
+			width: 100%;
+			height: 100%;
+		}
 	}
 </style>
 
 <div bind:this={container} class="graph-container">
-	<div class="placeholder" bind:this={placeholder}></div>
 	<!-- Based on and modified from https://github.com/rohanrhu/nodes.js -->
-	<canvas id="graph" style="display: none;" bind:this={canvas}></canvas>
+	<canvas id="graph" bind:this={canvas}></canvas>
 </div>

@@ -1,5 +1,5 @@
 ---
-import Graph from '../components/Graph.svelte';
+import TopSection from '../components/TopSection.astro';
 import Synth from '../components/Synth.svelte';
 import Player from '../components/Player.svelte';
 
@@ -14,210 +14,33 @@ let title = 'My Astro Site';
 	<link rel="stylesheet" href="/style/global.css">
 
 	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
-
-		.container.ontop {
-			position: absolute;
-			top: 5vh;
-			left: 50%;
-			transform: translateX(-50%);
-		}
-
-		.container.ontop,
-		.container.ontop .right,
-		.container.ontop .left {
-			height: 90vh;
-			max-height: 700px;
-		}
-
-		@media screen and (min-height: 778px) {
-			.container.ontop {
-				top: calc(50vh - 350px);
-			}
-		}
-
-		@media screen and (min-height: 1080px) {
-			.container.ontop {
-				top: 190px;
-			}
-		}
-
-		#propic {
-			height: 100%;
-			display: block;
-			margin: 0 auto;
-		}
-
-		@media screen and (max-width: 991px) {
-			#propic {
-				height: auto;
-				width: 100%;
-				margin-top: 10px;
-			}
-
-			.container.ontop {
-				height: auto;
-			}
-		}
-
-		h1#name {
-			font-size: 3em;
-			font-family: 'Patua One', cursive;
-			font-weight: 400;
-			display: block;
-			margin: auto;
-			color: var(--light);
-		}
-
-		.card {
-			font-family: monospace;
-			background: var(--darker-blue);
-			width: 44ch;
-			display: block;
-			margin: auto;
-			margin-top: 4em;
-			padding: 1.3em 2.5em;
-			border: solid 1px rgba(240, 240, 240, .2);
-		}
-
-		@media screen and (max-width: 700px) {
-			.container.ontop {
-				top: 0;
-				width: 100%;
-			}
-
-			.card {
-				width: 100%;
-				border-top: none;
-				border-right: none;
-				border-left: none;
-				margin-top: 0;
-			}
-
-			#propic {
-				width: 70%;
-				margin: 18px auto;
-			}
-		}
-
-		.card .info ul {
-			margin-top: 2em;
-			font-size: .9em;
-			list-style-type: none;
-			padding: 0;
-		}
-
-		.card .info ul li {
-			margin: .8em 0;
-			color: rgba(240, 240, 240, .6);
-		}
-
-		.card .info ul li::before {
-			content: '>';
-			margin-right: .9em;
-		}
-		
-		.card .info ul li a {
-			color: var(--lilac);
-			opacity: .8;
-			text-decoration: none;
-			background-image: linear-gradient(var(--lilac), var(--lilac));
-			background-size: 0% 3px;
-			background-repeat: no-repeat;
-			background-position: left bottom;
-			transition: background-size .1s ease,
-						opacity .1s ease;
-		}
-
-		.card .info ul li a:hover {
-			opacity: 1;
-			background-size: 100% 3px;
-		}
-
-		.cursor {
-			height: 1em;
-			width: 5px;
-			background:rgba(240, 240, 240, .6);
-			display: inline-block;
-			transform: translateY(2px)
-		}
-
-		@keyframes blinking {
-			0%, 49%, 100% {
-				opacity: 1;
-			}
-
-			50%, 99% {
-				opacity: 0;
-			}
-		}
-
-		.blinking {
-			animation: blinking .7s infinite;
-		}
-		
 		.sticky {
 			position: sticky;
 			top: -2px;
 			margin-bottom: -60px;
 		}
-
-		.player {
-			height: 30px;
-			background: blue;
-		}
-
-		.separator {
-			height: 12px;
-			background: var(--green);
-		}
 	</style>
 </head>
 <body>
 	<main>
-		<Graph client:visible />
-		<section>
-			<div class="container ontop">
-				<div class="left">
-					<div class="card" id="info">
-						<h1 id="name">
-							Lorenzo Leonardini
-						</h1>
-						<div class="info">
-							<ul>
-								<li><a href="https://github.com/LorenzoLeonardini" target="_blank">github.com/LorenzoLeonardini</a></li>
-								<li><a href="https://linkedin.com/in/lorenzoleonardini" target="_blank">linkedin.com/in/lorenzoleonardini</a></li>
-								<li><a href="https://twitter.com/_lorenzo_leo" target="_blank">twitter.com/_lorenzo_leo</a></li>
-								<li><span class="blinking cursor"></span></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="right">
-					<img id="propic" src="https://leonardini.dev/images/person.jpeg" alt="Lorenzo Leonardini's photograph">
-				</div>
-			</div>
-		</section>
+		<TopSection />
 
 		<div class="separator"></div>
 		<div style="background: var(--darker-blue); text-align: center; padding: 1.6em 0; color: var(--light)">
 			<h2 style="font-family: 'Patua One'; font-weight: 400; font-size: 2.4em; opacity: .95">About me</h2>
 			<div style="width: 90%; max-width: 700px; margin: 1em auto; font-size: .9em; opacity: .95">
-				<p style="font-family: monospace">
+				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo repellendus deserunt fugiat fuga quae? Numquam, culpa enim, doloribus explicabo quaerat rem voluptates et perferendis iusto doloremque aliquid quis amet esse!
 				</p>
-
-				<p style="font-family: monospace; margin-top: 1em;">
+				<p>
 					Voluptatem est nisi, asperiores nam magnam aspernatur, provident esse nihil, repellendus accusantium corporis! Reprehenderit commodi repudiandae obcaecati beatae culpa quae maiores voluptatum?
 				</p>
 			</div>
 		</div>
 
-		<div style="background: linear-gradient(90deg, #f0f0f0 0%, #f0f0f0 50%, #202020 50%, #202020 100%)">
-			<section class="dark-bg" style="height: 100vh;">
-				<div class="container"></div>
-			</section>
-		</div>
+		<section class="dark-bg inverted" style="height: 100vh;">
+			<div class="container"></div>
+		</section>
 
 		<div class="separator"></div>
 		<div>
@@ -225,11 +48,9 @@ let title = 'My Astro Site';
 				<Player client:visible />
 			</div>
 
-			<div>
-				<section class="dark-bg" style="height: 300vh;">
-					<div class="container"></div>
-				</section>
-			</div>
+			<section class="dark-bg" style="height: 300vh;">
+				<div class="container"></div>
+			</section>
 		</div>
 
 		<div class="separator"></div>
