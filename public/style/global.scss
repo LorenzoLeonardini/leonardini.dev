@@ -49,6 +49,7 @@ body {
 }
 
 section.inverted {
+	background: var(--dark);
 	background: linear-gradient(
 		90deg, var(--light) 0%, var(--light) 50%,
 		var(--dark) 50%, var(--dark) 100%
@@ -64,7 +65,7 @@ section.inverted {
 		background: var(--light);
 	}
 	.dark-bg {
-		background: var(--dark);
+		background: var(--dark) !important;
 	}
 }
 
