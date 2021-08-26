@@ -3,15 +3,37 @@ import TopSection from '../components/TopSection.astro';
 import Synth from '../components/Synth.svelte';
 import Player from '../components/Player.svelte';
 
-let title = 'My Astro Site';
+let title = 'Lorenzo Leonardini';
+let description = 'Profile page of a self-taught developer. Portfolio, skills and contacts';
+let url = 'https://leonardini.dev';
+let image = 'https://leonardini.dev/images/person.jpeg';
 ---
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{title}</title>
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="stylesheet" href="/style/global.css">
+	<meta name="theme-color" content="#1A181B" />
+
+	<!-- SEO -->
+	<meta name="description" content="{description}">
+	<link rel="canonical" href="{url}">
+	<meta name="robots" content="index, follow">
+	<!-- Open Graph -->
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="{title}">
+	<meta property="og:description" content="{description}">
+	<meta property="og:image" content="{image}">
+	<meta property="og:url" content="{url}">
+	<meta property="og:site_name" content="{title}">
+	<!-- Twitter Cards -->
+	<meta property="twitter:title" content="{title}">
+	<meta property="twitter:description" content="{description}">
+	<meta property="twitter:image" content="{image}">
+	<meta property="twitter:url" content="{url}">
+	<meta property="twitter:creator" content="@_lorenzo_leo">
 
 	<style>
 		.sticky {
