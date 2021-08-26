@@ -41,7 +41,7 @@
 			|| canvas.width !== canvas.clientWidth * window.devicePixelRatio;
 
 		if(window.innerWidth <= 700) {
-			container.style.height = `${document.querySelector('.container.ontop').clientHeight}px`;
+			container.style.height = `${document.querySelector('#top-section').clientHeight}px`;
 		}
 
 		canvas.width = Math.floor(canvas.clientWidth * window.devicePixelRatio);
