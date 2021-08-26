@@ -26,7 +26,7 @@
 				height: 70,
 				barWidth: 2
 			});
-			wavesurfer.load('/assets/ais.mp3')
+			wavesurfer.load('/assets/alone_in_space.mp3')
 		});
 		document.body.appendChild(library);
 
@@ -184,7 +184,7 @@
 
 <div class="player-container" class:small={small}>
 	<div class="container-fluid">
-		<img src="https://f4.bcbits.com/img/a1187346412_16.jpg" alt="Alone in Space album cover" class="album-cover">
+		<img src="/assets/alone_in_space.png" alt="Alone in Space album cover" class="album-cover" width="150" height="150">
 		<div class="play-button" on:click={togglePlay}>
 			<div class="play-icon" class:pause={playing}></div>
 		</div>
