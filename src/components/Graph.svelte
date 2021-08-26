@@ -39,7 +39,7 @@
 	
 	const resizeHandler = () => {
 		const toMoveAround = nodes[0] == undefined 
-			|| canvas.width !== canvas.clientWidth;
+			|| canvas.width !== canvas.clientWidth * window.devicePixelRatio;
 
 		if(window.innerWidth <= 700) {
 			container.style.height = `${document.querySelector('.container.ontop').clientHeight}px`;
