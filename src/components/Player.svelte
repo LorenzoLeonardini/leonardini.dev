@@ -184,7 +184,7 @@
 
 <div class="player-container" class:small={small}>
 	<div class="container-fluid">
-		<img src="/assets/alone_in_space.png" alt="Alone in Space album cover" class="album-cover" width="150" height="150">
+		<img src="/assets/alone_in_space.jpg" alt="Alone in Space album cover" class="album-cover" width="150" height="150">
 		<div class="play-button" on:click={togglePlay}>
 			<div class="play-icon" class:pause={playing}></div>
 		</div>
