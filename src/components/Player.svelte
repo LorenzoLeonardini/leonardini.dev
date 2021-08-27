@@ -46,10 +46,15 @@
 			wave.push(avg);
 		}
 
-		for(let i in wave) {
-			wave[i] += 0.00002 * Math.pow(2, 1 + wave[i]);
+
+		let max = Math.max(...wave);
+		for(let i = 0; i < wave.length; i++){
+			wave[i] = wave[i] / max;
 		}
-		const max = Math.max(...wave);
+		for(let i in wave) {
+			wave[i] += Math.pow(10, 1 + wave[i]);
+		}
+		max = Math.max(...wave);
 		for(let i = 0; i < wave.length; i++){
 			wave[i] = wave[i] / max;
 		}
