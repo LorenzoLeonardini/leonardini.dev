@@ -7,7 +7,6 @@
 	let audio :HTMLAudioElement;
 	
 	let playing = false;
-	let wavesurfer;
 	let small = false;
 
 	function togglePlay() {
@@ -28,6 +27,13 @@
 		draw();
 	}
 
+	const normalize = (array :Array<number>) => {
+		const max = Math.max(...array);
+		for(let i = 0; i < array.length; i++) {
+			array[i] /= max;
+		}
+	}
+
 	const draw = () => {
 		const ctx = canvas.getContext('2d');
 		ctx.clearRect(0, 0, width, height);
@@ -36,7 +42,7 @@
 		const bar_space = 1 * window.devicePixelRatio;
 
 		const amount = Math.floor(width / (bar_width + bar_space));
-		const wave = [];
+		let wave = [];
 		const samples = Math.floor(waveform.length / amount);
 		for(let i = 0; i < amount; i++) {
 			let avg = 0;
@@ -46,18 +52,9 @@
 			wave.push(avg);
 		}
 
-
-		let max = Math.max(...wave);
-		for(let i = 0; i < wave.length; i++){
-			wave[i] = wave[i] / max;
-		}
-		for(let i in wave) {
-			wave[i] += Math.pow(10, 1 + wave[i]);
-		}
-		max = Math.max(...wave);
-		for(let i = 0; i < wave.length; i++){
-			wave[i] = wave[i] / max;
-		}
+		normalize(wave);
+		wave = wave.map((e) => e + Math.pow(10, 1 + e));
+		normalize(wave);
 
 		let not_played = 0;
 		if(audio && audio.currentTime && audio.duration) {
@@ -95,26 +92,11 @@
 
 		canvas.onclick = (e :PointerEvent) => {
 			if(!audio) return;
-			const position = (e as any).layerX;
+			const position = (e as any).layerX * window.devicePixelRatio;
 			const seek = (position / width) * audio.duration;
 			console.log(position, seek);
 			audio.currentTime = Math.floor(seek);
 		}
-
-		// const library = document.createElement('script');
-		// library.src = 'https://unpkg.com/wavesurfer.js@5.2.0/dist/wavesurfer.min.js';
-
-		// library.addEventListener('load', () => {
-		// 	wavesurfer = (window as any).WaveSurfer.create({
-		// 		container: '#waveform',
-		// 		waveColor: '#f0f0f0',
-		// 		progressColor: '#DF99F0',
-		// 		height: 70,
-		// 		barWidth: 2
-		// 	});
-		// 	wavesurfer.load('/assets/alone_in_space.mp3')
-		// });
-		// document.body.appendChild(library);
 
 		const observer = new IntersectionObserver(
 			(entries, observer) => {
