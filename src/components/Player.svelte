@@ -24,14 +24,16 @@
 		canvas.height = Math.floor(canvas.clientHeight * window.devicePixelRatio);
 		width = canvas.width;
 		height = canvas.height;
+		
+		draw();
 	}
 
 	const draw = () => {
 		const ctx = canvas.getContext('2d');
 		ctx.clearRect(0, 0, width, height);
 
-		const bar_width = 2;
-		const bar_space = 1;
+		const bar_width = 2 * window.devicePixelRatio;
+		const bar_space = 1 * window.devicePixelRatio;
 
 		const amount = Math.floor(width / (bar_width + bar_space));
 		const wave = [];
@@ -72,7 +74,6 @@
 		document.body.onresize = resizeHandler;
 		resizeHandler();
 
-		draw();
 		audio.ontimeupdate = () => {
 			draw();
 		};
