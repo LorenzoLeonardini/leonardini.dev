@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "typescript": "^4.3.5",
+    "waveformer": "^0.0.1",
     "web-midi-api": "^2.1.1"
   }
 }

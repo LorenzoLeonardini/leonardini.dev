@@ -1,34 +1,104 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
+	let waveform :Array<number>;
+	let canvas :HTMLCanvasElement;
+	let width :number, height :number;
+	let audio :HTMLAudioElement;
+	
 	let playing = false;
 	let wavesurfer;
 	let small = false;
 
 	function togglePlay() {
 		if(playing) {
-			wavesurfer.pause();
+			audio.pause();
 		} else {
-			wavesurfer.play();
+			audio.play();
 		}
 		playing = !playing;
 	}
 
-	onMount(() => {
-		const library = document.createElement('script');
-		library.src = 'https://unpkg.com/wavesurfer.js@5.2.0/dist/wavesurfer.min.js';
+	const resizeHandler = () => {
+		canvas.width = Math.floor(canvas.clientWidth * window.devicePixelRatio);
+		canvas.height = Math.floor(canvas.clientHeight * window.devicePixelRatio);
+		width = canvas.width;
+		height = canvas.height;
+	}
 
-		library.addEventListener('load', () => {
-			wavesurfer = (window as any).WaveSurfer.create({
-				container: '#waveform',
-				waveColor: '#f0f0f0',
-				progressColor: '#DF99F0',
-				height: 70,
-				barWidth: 2
-			});
-			wavesurfer.load('/assets/alone_in_space.mp3')
-		});
-		document.body.appendChild(library);
+	const draw = () => {
+		const ctx = canvas.getContext('2d');
+		ctx.clearRect(0, 0, width, height);
+
+		const bar_width = 2;
+		const bar_space = 1;
+
+		const amount = Math.floor(width / (bar_width + bar_space));
+		const wave = [];
+		const samples = Math.floor(waveform.length / amount);
+		for(let i = 0; i < amount; i++) {
+			let avg = 0;
+			for(let j = 0; j < samples; j++) {
+				avg += waveform[i * samples + j];
+			}
+			wave.push(avg / samples);
+		}
+
+		let not_played = 0;
+		if(audio && audio.currentTime && audio.duration) {
+			not_played = Math.ceil((amount * audio.currentTime) / audio.duration)
+		}
+
+		ctx.fillStyle = `#DD90F0`;
+		for(let i = 0; i < not_played; i++) {
+			ctx.fillRect(i * (bar_width + bar_space), (height - wave[i] * height / 1.5) / 2, bar_width, wave[i] * height / 1.5);
+		}
+
+		ctx.fillStyle = `rgba(240,240,240,0.8)`;
+		for(let i = not_played; i < amount; i++) {
+			ctx.fillRect(i * (bar_width + bar_space), (height - wave[i] * height / 1.5) / 2, bar_width, wave[i] * height / 1.5);
+		}
+
+		ctx.strokeStyle = `rgba(240,240,240,.6)`;
+		ctx.beginPath();
+		ctx.moveTo((width * audio.currentTime) / audio.duration, 0);
+		ctx.lineTo((width * audio.currentTime) / audio.duration, height);
+		ctx.stroke();
+	}
+
+	onMount(async () => {
+		waveform = await fetch('/assets/alone_in_space.json').then((data) => data.json());
+
+		document.body.onresize = resizeHandler;
+		resizeHandler();
+
+		draw();
+		audio.ontimeupdate = () => {
+			draw();
+		};
+
+		canvas.onclick = (e :PointerEvent) => {
+			if(!audio) return;
+			const position = (e as any).layerX;
+			const seek = (position / width) * audio.duration;
+			console.log(position, seek);
+			audio.currentTime = Math.floor(seek);
+		}
+
+		// const library = document.createElement('script');
+		// library.src = 'https://unpkg.com/wavesurfer.js@5.2.0/dist/wavesurfer.min.js';
+
+		// library.addEventListener('load', () => {
+		// 	wavesurfer = (window as any).WaveSurfer.create({
+		// 		container: '#waveform',
+		// 		waveColor: '#f0f0f0',
+		// 		progressColor: '#DF99F0',
+		// 		height: 70,
+		// 		barWidth: 2
+		// 	});
+		// 	wavesurfer.load('/assets/alone_in_space.mp3')
+		// });
+		// document.body.appendChild(library);
 
 		const observer = new IntersectionObserver(
 			(entries, observer) => {
@@ -135,6 +205,12 @@
 				bottom: 10px;
 				left: calc(var(--height) + 2em);
 				right: 2em;
+				height: 70px;
+
+				canvas {
+					width: 100%;
+					height: 100%;
+				}
 			}
 		}
 
@@ -191,7 +267,10 @@
 		<div class="song-name">Alone in Space</div>
 		<div class="song-artist">Lorenzo Leonardini</div>
 		<div class="waveform-container">
-			<div id="waveform"></div>
+			<canvas bind:this={canvas}></canvas>
 		</div>
+		<audio bind:this={audio}>
+			<source src="/assets/alone_in_space.mp3" type="audio/mp3">
+		</audio>
 	</div>
 </div>
