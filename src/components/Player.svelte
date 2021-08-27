@@ -43,7 +43,15 @@
 			for(let j = 0; j < samples; j++) {
 				avg += waveform[i * samples + j];
 			}
-			wave.push(avg / samples);
+			wave.push(avg);
+		}
+
+		for(let i in wave) {
+			wave[i] += 0.00002 * Math.pow(2, 1 + wave[i]);
+		}
+		const max = Math.max(...wave);
+		for(let i = 0; i < wave.length; i++){
+			wave[i] = wave[i] / max;
 		}
 
 		let not_played = 0;
@@ -51,14 +59,16 @@
 			not_played = Math.ceil((amount * audio.currentTime) / audio.duration)
 		}
 
+		const scale = 1.5;
+
 		ctx.fillStyle = `#DD90F0`;
 		for(let i = 0; i < not_played; i++) {
-			ctx.fillRect(i * (bar_width + bar_space), (height - wave[i] * height / 1.5) / 2, bar_width, wave[i] * height / 1.5);
+			ctx.fillRect(i * (bar_width + bar_space), (height - wave[i] * height / scale) / 2, bar_width, wave[i] * height / scale);
 		}
 
 		ctx.fillStyle = `rgba(240,240,240,0.8)`;
 		for(let i = not_played; i < amount; i++) {
-			ctx.fillRect(i * (bar_width + bar_space), (height - wave[i] * height / 1.5) / 2, bar_width, wave[i] * height / 1.5);
+			ctx.fillRect(i * (bar_width + bar_space), (height - wave[i] * height / scale) / 2, bar_width, wave[i] * height / scale);
 		}
 
 		ctx.strokeStyle = `rgba(240,240,240,.6)`;
