@@ -204,6 +204,8 @@
 				left: calc(var(--height) + 2em);
 				right: 2em;
 				height: 70px;
+				transition: transform var(--transition-time) ease,
+						right var(--transition-time) ease;
 
 				canvas {
 					width: 100%;
@@ -229,7 +231,7 @@
 				}
 			}
 			
-			.waveform-container { transform: scale(1, 1.17) translate(-70px, -.8em); }
+			.waveform-container { transform: scale(1, 1.17) translate(-60px, -.8em); right: calc(2em - 60px) }
 		}
 
 		&:hover {
@@ -243,8 +245,7 @@
 	.album-cover,
 	.play-button,
 	.song-name,
-	.song-artist,
-	.waveform-container {
+	.song-artist {
 		transition: transform var(--transition-time) ease;
 		transform-origin: top left;
 	}
