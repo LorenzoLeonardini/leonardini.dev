@@ -119,17 +119,17 @@
 					left: -2.5rem;
 					top: .6rem;
 					--line-size: 2px;
-
+					--size: 30px;
+					
 					&::before {
 						background: none;
 						border: solid var(--line-size) var(--light);
 						left: calc(-2.5rem - (var(--size) / 2));
-						top: -.6rem;
 					}
 					&::after {
-						width: 6.7rem;
-						left: -.7rem;
-						top: calc((var(--size) / 2) - .6rem);
+						width: 7.5rem;
+						left: -1.5rem;
+						top: calc((var(--size) / 2));
 					}
 				}
 
