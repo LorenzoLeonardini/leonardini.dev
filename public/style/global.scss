@@ -148,6 +148,11 @@ p + p {
 		.left, .right {
 			height: auto !important;
 		}
+
+		&.noleft-mobile {
+			width: 95%;
+			margin: 0 auto 0 0;
+		}
 	}
 }
 

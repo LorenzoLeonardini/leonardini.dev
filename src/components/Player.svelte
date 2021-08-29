@@ -92,9 +92,8 @@
 
 		canvas.onclick = (e :PointerEvent) => {
 			if(!audio) return;
-			const position = (e as any).layerX * window.devicePixelRatio;
-			const seek = (position / width) * audio.duration;
-			console.log(position, seek);
+			const position = ((e as any).layerX + (small ? 60 : 0)) * window.devicePixelRatio;
+			const seek = (position / (width + (small ? 60 : 0))) * audio.duration;
 			audio.currentTime = Math.floor(seek);
 		}
 
