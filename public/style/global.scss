@@ -29,6 +29,9 @@
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Patua One', sans-serif;
 	font-weight: 400;
+}
+
+h1 {
 	color: var(--light);
 }
 
@@ -75,7 +78,12 @@ section.inverted {
 
 	.light-bg {
 		background: var(--light);
+
+		.left {
+			color: var(--dark) !important;
+		}
 	}
+
 	.dark-bg {
 		background: var(--dark) !important;
 	}
@@ -103,6 +111,7 @@ section.inverted {
 	}
 	.left {
 		grid-area: left;
+		color: var(--light);
 	}
 	.right {
 		grid-area: right;

@@ -116,7 +116,7 @@
 				transform: translateX(0%);
 
 				.date {
-					left: -2.5rem;
+					left: -3.5rem;
 					top: .6rem;
 					--line-size: 2px;
 					--size: 30px;
@@ -124,13 +124,17 @@
 					&::before {
 						background: none;
 						border: solid var(--line-size) var(--light);
-						left: calc(-2.5rem - (var(--size) / 2));
+						left: calc(-1.5rem - (var(--size) / 2));
 					}
 					&::after {
-						width: 7.5rem;
-						left: -1.5rem;
+						width: 6.5rem;
+						left: -.5rem;
 						top: calc((var(--size) / 2));
 					}
+				}
+
+				.title {
+					left: 2.5em;
 				}
 
 				.description {
