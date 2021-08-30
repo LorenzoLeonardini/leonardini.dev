@@ -282,30 +282,50 @@
 		}
 	};
 
-	let currentY = 0;
-	function movingKnob(mousemove) {
-		if(mousemove.buttons !== 1) {
-			return;
-		}
-
-		const knob_id = mousemove.target.dataset.id;
+	function rotateKnob(knob_id :string, y :number, element :HTMLElement) {
 		if(knob_id == null) return;
 		// Knob Rotation
-		if(mousemove.pageY - currentY !== 0) { 
-			knobs[knob_id].rotation -= (mousemove.pageY - currentY) * 4;
+		if(y - currentY !== 0) { 
+			knobs[knob_id].rotation -= (y - currentY) * 4;
 		}
-		currentY = mousemove.pageY;
+		currentY = y;
 
 		// Setting Max rotation
 		if(knobs[knob_id].rotation >= 132) { knobs[knob_id].rotation = 132; } 
 		else if(knobs[knob_id].rotation <= -132) { knobs[knob_id].rotation = -132; }
 
-		mousemove.target.style.transform=`rotate(${knobs[knob_id].rotation}deg)`;
+		element.style.transform=`rotate(${knobs[knob_id].rotation}deg)`;
+	}
+
+	let currentY = 0;
+	function knobMouseDrag(mousemove) {
+		if(mousemove.buttons !== 1) {
+			return;
+		}
+
+		const knob_id = mousemove.target.dataset.id;
+		rotateKnob(knob_id, mousemove.pageY, mousemove.target);
+	}
+
+
+	function knobTapDrag(touchmove) {
+		console.log(touchmove);
+
+		const knob_id = touchmove.target.dataset.id;
+		rotateKnob(knob_id, touchmove.touches[0].pageY, touchmove.target);
+		// rotateKnob(knob_id, mousemove.pageY, mousemove.target);
 	}
 </script>
 
-<style>
+<style lang="scss">
 	@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+	@keyframes rotation {
+		0% { transform: rotate(-180deg) translateY(2px); }
+		100% { transform: rotate(0deg) translateY(2px); }
+	}
+
+	.hidden { display: none; }
 	
 	.keyboard-container {
 		width: auto;
@@ -327,50 +347,6 @@
 		border: solid 1px var(--dark-blue-lighter);
 	}
 
-	.key {
-		display:inline-block;
-		margin: 0;
-		border-bottom-left-radius: 2px;
-		border-bottom-right-radius: 2px;
-		cursor: pointer;
-		margin-left: 2px;
-		box-shadow: inset 0px 8px 10px -8px #000000;
-	}
-
-	.key:not(.key + .key) {
-		box-shadow: inset 8px 8px 10px -8px #000000;
-	}
-
-	.key.white {
-		background: white;
-		width: 30px;
-		height: 100%;
-	}
-
-	.key.white:hover {
-		background: #e5e5e5;
-	}
-	.key.white:active,
-	.key.white.active {
-		background: #b0b0b0;
-	}
-
-	.key.black {
-		background: black;
-		width: 20px;
-		height: 60%;
-		position: absolute;
-		transform: translateX(-50%);
-	}
-
-	.key.black:hover {
-		background: #151515;
-	}
-	.key.black:active,
-	.key.black.active {
-		background: #303030;
-	}
-
 	.logo {
 		position: absolute;
 		color: rgba(255, 255, 255, .8);
@@ -378,74 +354,12 @@
 		right: 50px;
 		font-size: .7em;
 		font-family: monospace;
-	}
-
-	.logo .cursive {
-		font-family: 'Satisfy', cursive;
-		font-size: 1.2rem;
-		margin-right: 6px;
-	}
-
-	.controls {
-		display: inline-block;
-		height: 100%;
-		margin-right: 20px;
-		width: calc(54px * 4);
-		transform: translateY(-13px);
-	}
-
-	.knob-container {
-		display: inline-block;
-		position: relative;
-		margin: 13px 0;
-	}
-
-	.knob {
-		width: 30px;
-		height: 30px;
-		border-radius: 50%;
-		background: var(--blue);
-		display: inline-block;
-		margin: 0 12px 10px 12px;
-		position: relative;
-		cursor: pointer;
-	}
-
-	.controls, .controls * {
-		-webkit-user-drag: none;
-		-khtml-user-drag: none;
-		-moz-user-drag: none;
-		-o-user-drag: none;
-		user-drag: none;
-	}
-
-	.knob::after {
-		content: '';
-		display: block;
-		position: absolute;
-		width: 2px;
-		height: 10px;
-		background: rgba(255, 255, 255, .8);
-		left: 50%;
-		transform: translateX(-50%);
-	}
-
-	.knob-container .label {
-		display: inline-block;
-		position: absolute;
-		bottom: 0px;
-		font-size: .6em;
-		color: white;
-		font-family: monospace;
-		left: 50%;
-		transform: translateX(-50%);
-		white-space: nowrap;
-		-webkit-touch-callout: none; /* iOS Safari */
-		-webkit-user-select: none; /* Safari */
-		-khtml-user-select: none; /* Konqueror HTML */
-		-moz-user-select: none; /* Old versions of Firefox */
-		-ms-user-select: none; /* Internet Explorer/Edge */
-		user-select: none;
+		
+		.cursive {
+			font-family: 'Satisfy', cursive;
+			font-size: 1.2rem;
+			margin-right: 6px;
+		}
 	}
 
 	.midi, .nomidi {
@@ -466,18 +380,159 @@
 		display: inline-block;
 		transform: translateY(2px);
 		cursor: pointer;
-	}
 
-	.reload-button:hover {
-		animation: rotation .4s linear;
-	}
-
-	@keyframes rotation {
-		0% {
-			transform: rotate(-180deg) translateY(2px);
+		&:hover {
+			animation: rotation .4s linear;
 		}
-		100% {
-			transform: rotate(0deg) translateY(2px);
+	}
+
+	.controls {
+		display: inline-block;
+		height: 100%;
+		margin-right: 20px;
+		width: calc(54px * 4);
+		transform: translateY(-13px);
+
+		&, * {
+			-webkit-user-drag: none;
+			-khtml-user-drag: none;
+			-moz-user-drag: none;
+			-o-user-drag: none;
+		}
+	}
+
+	.knob-container {
+		display: inline-block;
+		position: relative;
+		margin: 13px 0;
+
+		.label {
+			display: inline-block;
+			position: absolute;
+			bottom: 0px;
+			font-size: .6em;
+			color: white;
+			font-family: monospace;
+			left: 50%;
+			transform: translateX(-50%);
+			white-space: nowrap;
+			-webkit-touch-callout: none; /* iOS Safari */
+			-webkit-user-select: none; /* Safari */
+			-khtml-user-select: none; /* Konqueror HTML */
+			-moz-user-select: none; /* Old versions of Firefox */
+			-ms-user-select: none; /* Internet Explorer/Edge */
+			user-select: none;
+		}
+	}
+
+	.knob {
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		background: var(--blue);
+		display: inline-block;
+		margin: 0 12px 10px 12px;
+		position: relative;
+		cursor: pointer;
+
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 2px;
+			height: 10px;
+			background: rgba(255, 255, 255, .8);
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+
+	.keys-container {
+		display: inline-block;
+		position: relative;
+		height: 100%;
+	}
+
+	.key {
+		display:inline-block;
+		margin: 0;
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+		cursor: pointer;
+		margin-left: 2px;
+		box-shadow: inset 0px 8px 10px -8px #000000;
+
+		&:not(.key + .key) {
+			box-shadow: inset 8px 8px 10px -8px #000000;
+		}
+
+		&.white {
+			background: #ffffff;
+			width: 30px;
+			height: 100%;
+			&:hover {
+				background: #e5e5e5;
+			}
+			&:active, &.active {
+				background: #b0b0b0;
+			}
+		}
+
+		&.black {
+			background: black;
+			width: 20px;
+			height: 60%;
+			position: absolute;
+			transform: translateX(-50%);
+
+			&:hover {
+				background: #151515;
+			}
+
+			&:active, &.active {
+				background: #303030;
+			}
+		}
+	}
+
+	.depth {
+		position: absolute;
+		top: 20px;
+		left: 10px;
+		right: -10px;
+		bottom: -20px;
+		z-index: -2;
+		background: #0c1217;
+		border-radius: 6px;
+		border: solid 1px #0c1217;
+		box-shadow: 3px 3px 16px 1px #000000;
+
+		&::before, &::after {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			border-radius: 6px;
+			background: #0c1217;
+		}
+		
+		&::before {
+			bottom: 3px;
+			left: -7px;
+
+			width: 30px;
+			height: 28px;
+
+			transform: rotate(-27deg);
+		}
+
+		&::after {
+			top: -18px;
+			right: 3px;
+
+			width: 30px;
+			height: 33px;
+			
+			transform: rotate(-23deg);
 		}
 	}
 
@@ -502,78 +557,35 @@
 	.select {
 		display: inline-block;
 		position: relative;
-	}
 
-	.select::after {
-		content: '';
-		position: absolute;
-		top: 8px;
-		right: 6px;
-		width: 0.7em;
-		height: 0.4em;
-		background-color: var(--blue);
-		clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+		&::after {
+			content: '';
+			position: absolute;
+			top: 8px;
+			right: 6px;
+			width: 0.7em;
+			height: 0.4em;
+			background-color: var(--blue);
+			clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+		}
 	}
-
-	.keys-container {
-		display: inline-block;
-		position: relative;
-		height: 100%;
-	}
-
-	.depth {
-		position: absolute;
-		top: 20px;
-		left: 10px;
-		right: -10px;
-		bottom: -20px;
-		z-index: -2;
-		background: #0c1217;
-		border-radius: 6px;
-		border: solid 1px #0c1217;
-		box-shadow: 3px 3px 16px 1px #000000;
-	}
-
-	.depth::before {
-		content: '';
-		position: absolute;
-		bottom: 3px;
-		left: -7px;
-		width: 30px;
-		height: 28px;
-		z-index: -1;
-		border-radius: 6px;
-		background: #0c1217;
-		transform: rotate(-27deg);
-	}
-
-	.depth::after {
-		content: '';
-		position: absolute;
-		top: -18px;
-		right: 3px;
-		width: 30px;
-		height: 33px;
-		z-index: -1;
-		border-radius: 6px;
-		background: #0c1217;
-		transform: rotate(-23deg);
-	}
-
-	.hidden {
-		display: none;
-	}
-
+	
 	@media screen and (max-width: 700px) {
+		.keyboard-container {
+			padding: 0;
+		}
+
+		.keyboard {
+			height: 270px;
+			width: 100%;
+			padding: 40px 10px 20px 10px;
+		}
+
 		.controls {
 			width: calc(54px * 8);
 			transform: translateY(-4px);
 			margin-right: 0;
 			height: auto;
-		}
-
-		.keyboard-container {
-			padding: 0;
 		}
 
 		.keys-container {
@@ -583,25 +595,19 @@
 		.depth {
 			display: none;
 		}
-
-		.keyboard {
-			height: 270px;
-			width: 100%;
-			padding: 40px 10px 20px 10px;
-		}
 	}
 
 	@media screen and (max-width: 700px) and (orientation: portrait) {
+		.controls {
+			width: calc(54px * 5);
+		}
+
 		.knob-container[data-id="resonance"],
 		.knob-container[data-id="triangle"],
 		.knob-container[data-id="decay"],
 		.portrait-hidden,
 		.midi {
 			display: none;
-		}
-
-		.controls {
-			width: calc(54px * 5);
 		}
 	}
 </style>
@@ -643,8 +649,8 @@
 					<div 
 						on:mousedown={(event) => {currentY = event.pageY}} 
 						on:touchstart={(event) => {currentY = event.touches[0].pageY}} 
-						on:mousemove={movingKnob} 
-						on:touchmove={(e) => console.log(e)} 
+						on:mousemove|preventDefault={knobMouseDrag} 
+						on:touchmove|preventDefault={knobTapDrag}
 						class="knob" data-id="{idx}"></div>
 					<div class="label">{knobs[idx].label}</div>
 				</div>
