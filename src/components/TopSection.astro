@@ -14,7 +14,6 @@ import Graph from '../components/Graph.svelte';
 		.container .right,
 		.container .left {
 			height: 90vh;
-			max-height: 700px;
 		}
 
 		.container {
@@ -105,6 +104,16 @@ import Graph from '../components/Graph.svelte';
 			.right #propic {
 				width: 70%;
 				margin: 18px auto;
+			}
+		}
+	}
+
+	@media screen and (orientation: landscape) and (min-width: 992px) {
+		#top-section {
+			.container,
+			.container .left,
+			.container .right {
+				max-height: 700px;
 			}
 		}
 	}
