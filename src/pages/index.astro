@@ -1,6 +1,6 @@
 ---
 import TopSection from '../components/TopSection.astro';
-import Works from '../components/Works.astro';
+import Works from '../components/Works.svelte';
 import Contacts from '../components/Contacts.astro';
 import Synth from '../components/Synth.svelte';
 import Player from '../components/Player.svelte';
@@ -81,7 +81,7 @@ let image = 'https://leonardini.dev/images/person.jpeg';
 			</div>
 
 			<section class="light-bg">
-				<Works />
+				<Works client:idle />
 			</section>
 		</div>
 

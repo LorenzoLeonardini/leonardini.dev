@@ -1,0 +1,22 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+	
+	export let src :string;
+	export let width :string;
+	export let height :string;
+	export let alt :string;
+
+	let element :HTMLImageElement;
+
+	onMount(() => {
+		element.src = src;
+		element.setAttribute('width', width);
+		element.setAttribute('height', height);
+		element.alt = alt;
+	})
+</script>
+
+<noscript>
+	<img {src} {alt} {width} {height} />
+</noscript>
+<img bind:this={element} {alt} {width} {height} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAEbCAQAAABewRpcAAACOUlEQVR42u3TMQ0AAAzDsJU/6SHo38OGECk5oIoEYBAwCBgEDAIGAYOAQcAgYBDAIGAQMAgYBAwCBgGDgEHAIGAQwCBgEDAIGAQMAgYBg4BBwCCAQcAgYBAwCBgEDAIGAYOAQcAggEHAIGAQMAgYBAwCBgGDgEEAg4BBwCBgEDAIGAQMAgYBg4BBAIOAQcAgYBAwCBgEDAIGAYMABgGDgEHAIGAQMAgYBAwCBgGDAAYBg4BBwCBgEDAIGAQMAgYBg0gABgGDgEHAIGAQMAgYBAwCBgEMAgYBg4BBwCBgEDAIGAQMAgYBDAIGAYOAQcAgYBAwCBgEDAIYBAwCBgGDgEHAIGAQMAgYBAwCGAQMAgYBg4BBwCBgEDAIGAQwCBgEDAIGAYOAQcAgYBAwCBgEMAgYBAwCBgGDgEHAIGAQMAhgEDAIGAQMAgYBg4BBwCBgEDAIYBAwCBgEDAIGAYOAQcAgYBAwiARgEDAIGAQMAgYBg4BBwCBgEMAgYBAwCBgEDAIGAYOAQcAgYBDAIGAQMAgYBAwCBgGDgEHAIIBBwCBgEDAIGAQMAgYBg4BBwCCAQcAgYBAwCBgEDAIGAYOAQQCDgEHAIGAQMAgYBAwCBgGDgEEAg4BBwCBgEDAIGAQMAgYBgwAGAYOAQcAgYBAwCBgEDAIGAYMABgGDgEHAIGAQMAgYBAwCBgGDSAAGAYOAQcAgYBAwCBgEDAIGAQwCBgGDgEHAIGAQMAgYBAwCBgEMAgYBg4BBYMADvKcBHPnt0RsAAAAASUVORK5CYII=" />
