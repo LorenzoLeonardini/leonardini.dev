@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "start": "astro dev",
-    "build": "astro build"
+    "build": "astro build",
+    "version": "astro --version",
+    "reload": "astro --reload"
   },
   "devDependencies": {
     "@astrojs/renderer-svelte": "^0.1.1",
-    "astro": "^0.17.2"
+    "astro": "^0.20.3"
   },
   "dependencies": {
     "typescript": "^4.3.5",
