@@ -97,7 +97,7 @@
 				<a href="https://yaav.leonardini.dev" target="_blank" rel="noreferrer"><Lazyload src="/assets/yaav.jpg" alt="YAAV - Yet Another Algorithm Visualizer" height="283" width="100%" /></a>
 			</div>
 			<div class="name">YAAV - Yet Another Algorithm Visualizer</div>
-			<div class="description">My own take at an algorithm visualizer, built with collaboration and expansion in mind. Aiming not only at sorting and graph algorithms, but also computer vision, search, games and many others.</div>
+			<div class="description">(In progress) My own take at an algorithm visualizer, built with collaboration and expansion in mind. Aiming not only at sorting and graph algorithms, but also computer vision, search, games and many others.</div>
 		</div>
 
 		<div class="work-element">

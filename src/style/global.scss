@@ -44,7 +44,21 @@ h2 {
 	background: var(--darker-blue);
 	text-align: center;
 	padding: 1.6em 0;
-	color: var(--light)
+	color: var(--light);
+	
+	div {
+		width: 90%;
+		max-width: 700px;
+		margin: 1em auto;
+		font-size: .9em;
+		opacity: .95;
+	}
+}
+
+footer.text-section {
+	background: var(--dark);
+	padding: .5em 0;
+	font-size: .8em;
 }
 
 @media screen and (max-width: 700px) {
@@ -86,6 +100,10 @@ section.inverted {
 
 	.dark-bg {
 		background: var(--dark) !important;
+
+		.left {
+			color: var(--light) !important;
+		}
 	}
 }
 
@@ -111,10 +129,20 @@ section.inverted {
 	}
 	.left {
 		grid-area: left;
-		color: var(--light);
 	}
 	.right {
 		grid-area: right;
+	}
+}
+
+section:not(.inverted) {
+	.container .left {
+		color: var(--light);
+	}
+}
+section.inverted {
+	.container .right {
+		color: var(--light);
 	}
 }
 
