@@ -6,7 +6,8 @@
     "start": "astro dev",
     "build": "astro build",
     "version": "astro --version",
-    "reload": "astro --reload"
+    "reload": "astro --reload",
+	  "preview": "astro preview"
   },
   "devDependencies": {
     "@astrojs/renderer-svelte": "^0.1.1",
