@@ -3,17 +3,17 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "astro dev",
+    "dev": "astro dev",
     "build": "astro build",
     "version": "astro --version",
     "reload": "astro --reload",
-	  "preview": "astro preview"
-  },
-  "devDependencies": {
-    "@astrojs/renderer-svelte": "^0.1.1",
-    "astro": "^0.20.3"
+    "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/svelte": "^0.4.1",
+    "astro": "^1.0.0-beta.73",
+    "sass": "^1.54.0",
+    "svelte": "^3.49.0",
     "typescript": "^4.3.5",
     "web-midi-api": "^2.1.1"
   }

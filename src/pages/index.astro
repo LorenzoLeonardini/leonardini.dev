@@ -7,6 +7,8 @@ import Synth from '../components/Synth.svelte';
 import Player from '../components/Player.svelte';
 import Background from '../components/Background.svelte';
 
+import '../style/global.scss'
+
 const title = 'Lorenzo Leonardini';
 const description = 'Profile page of a self-taught developer. Portfolio, skills and contacts';
 const url = 'https://leonardini.dev';
@@ -18,7 +20,6 @@ const image = `${url}/assets/person.jpeg`;
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{title}</title>
 	<link rel="shortcut icon" href="/favicon.ico" />
-	<link rel="stylesheet" href="{Astro.resolve('../style/global.css')}">
 	<meta name="theme-color" content="#1A181B" />
 
 	<!-- SEO -->

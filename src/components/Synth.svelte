@@ -221,7 +221,7 @@
 			console.log('WebMIDI not supported on this browser');
 			if(!imported) {
 				// @ts-ignore: import generates error for no reason
-				import('/WebMIDIAPI.min.js').then(module => {
+				require('/WebMIDIAPI.min.js').then(module => {
 					imported = true;
 					setUp();
 				}).catch(() => {
