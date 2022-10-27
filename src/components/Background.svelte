@@ -150,13 +150,13 @@
 	<div class="background-element">
 		<div class="date">2019-present</div>
 		<div class="title">University of Pisa</div>
-		<div class="description">Currently studying to get my Bachelor's degree in Computer Science.</div>
+		<div class="description">After getting my Bachelor's degree, I'm currently studying to get my Master's degree in Computer Science.</div>
 	</div>
 
 	<div class="background-element">
 		<div class="date">2021</div>
 		<div class="title">CyberChallenge.IT</div>
-		<div class="description">Second partecipation to the Italian program for cyber security. I placed first at the local competition, and helped my team get third at the national one. I was selected to be one of the twenty people in the <a href="https://teamitaly.eu/" target="_blank" rel="noreferrer">Italian team</a> for the European Cyber Security Challenge.</div>
+		<div class="description">Second partecipation to the Italian program for cyber security. I placed first at the local competition, and helped my team get third at the national one. I was selected to be one of the ten people in the <a href="https://teamitaly.eu/" target="_blank" rel="noreferrer">Italian team</a> for the European Cyber Security Challenge held in Prague.</div>
 	</div>
 
 	<div class="background-element">
