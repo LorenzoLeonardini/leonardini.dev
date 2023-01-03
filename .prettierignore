@@ -1,0 +1,16 @@
+.DS_Store
+node_modules
+/dist
+/.yarn/
+.env
+.env.*
+!.env.example
+.changeset/pre.json
+*.min.js
+alone_in_space.json
+Contacts.astro
+
+# Ignore files for PNPM, NPM and YARN
+pnpm-lock.yaml
+package-lock.json
+yarn.lock

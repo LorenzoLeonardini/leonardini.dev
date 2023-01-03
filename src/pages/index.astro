@@ -1,111 +1,132 @@
 ---
-import TopSection from '../components/TopSection.astro';
-import Works from '../components/Works.svelte';
-import Skills from '../components/Skills.svelte';
-import Contacts from '../components/Contacts.astro';
-import Synth from '../components/Synth.svelte';
-import Player from '../components/Player.svelte';
-import Background from '../components/Background.svelte';
+import TopSection from '../components/TopSection.astro'
+import Works from '../components/Works.svelte'
+import Skills from '../components/Skills.svelte'
+import Contacts from '../components/Contacts.astro'
+import Synth from '../components/Synth.svelte'
+import Player from '../components/Player.svelte'
+import Background from '../components/Background.svelte'
 
 import '../style/global.scss'
 
-const title = 'Lorenzo Leonardini';
-const description = 'Profile page of a self-taught developer. Portfolio, skills and contacts';
-const url = 'https://leonardini.dev';
-const image = `${url}/assets/person.jpeg`;
+const title = 'Lorenzo Leonardini'
+const description = 'Profile page of a self-taught developer. Portfolio, skills and contacts'
+const url = 'https://leonardini.dev'
+const image = `${url}/assets/person.jpeg`
 ---
+
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{title}</title>
-	<link rel="shortcut icon" href="/favicon.ico" />
-	<meta name="theme-color" content="#1A181B" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{title}</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<meta name="theme-color" content="#1A181B" />
 
-	<!-- SEO -->
-	<meta name="description" content="{description}">
-	<link rel="canonical" href="{url}">
-	<meta name="robots" content="index, follow">
-	<!-- Open Graph -->
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="{title}">
-	<meta property="og:description" content="{description}">
-	<meta property="og:image" content="{image}">
-	<meta property="og:url" content="{url}">
-	<meta property="og:site_name" content="{title}">
-	<!-- Twitter Cards -->
-	<meta property="twitter:title" content="{title}">
-	<meta property="twitter:description" content="{description}">
-	<meta property="twitter:image" content="{image}">
-	<meta property="twitter:url" content="{url}">
-	<meta property="twitter:creator" content="@_lorenzo_leo">
+		<!-- SEO -->
+		<meta name="description" content="{description}" />
+		<link rel="canonical" href="{url}" />
+		<meta name="robots" content="index, follow" />
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="{title}" />
+		<meta property="og:description" content="{description}" />
+		<meta property="og:image" content="{image}" />
+		<meta property="og:url" content="{url}" />
+		<meta property="og:site_name" content="{title}" />
+		<!-- Twitter Cards -->
+		<meta property="twitter:title" content="{title}" />
+		<meta property="twitter:description" content="{description}" />
+		<meta property="twitter:image" content="{image}" />
+		<meta property="twitter:url" content="{url}" />
+		<meta property="twitter:creator" content="@_lorenzo_leo" />
 
-	<style>
-		.sticky {
-			position: sticky;
-			top: -2px;
-			z-index: 999;
-			margin-bottom: -60px;
-		}
+		<style>
+			.sticky {
+				position: sticky;
+				top: -2px;
+				z-index: 999;
+				margin-bottom: -60px;
+			}
 
-		.sticky + section {
-			padding-top: 90px;
-		}
-	</style>
-</head>
-<body>
-	<main>
-		<TopSection />
+			.sticky + section {
+				padding-top: 90px;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<TopSection />
 
-		<div class="separator"></div>
-		<div class="text-section">
-			<h2>About me</h2>
-			<div>
-				<p>
-					I am a Computer Science student at the University of Pisa, Italy. I am a member of the <a href="https://zenhack.it" target="_blank" rel="noreferrer">ZenHack CTF team</a>. I am interested in coding, cyber security, electronics, music, and every combination of them.
-				</p>
-				<p>
-					I mainly play guitar and saxophone, but also bass and synths and everything I can put my hands on. I make music <a href="https://music.leonardini.dev" target="_blank" rel="noreferrer">by myself</a> and with my band <a href="https://papillegustative.com" target="_blank" rel="noreferrer">:Papille Gustative</a>.
-				</p>
+			<div class="separator"></div>
+			<div class="text-section">
+				<h2>About me</h2>
+				<div>
+					<p>
+						I am a Computer Science student at the University of Pisa, Italy. I am a member of the <a
+							href="https://zenhack.it"
+							target="_blank"
+							rel="noreferrer">ZenHack CTF team</a
+						>. I am interested in coding, cyber security, electronics, music, and every combination
+						of them.
+					</p>
+					<p>
+						I mainly play guitar and saxophone, but also bass and synths and everything I can put my
+						hands on. I make music <a
+							href="https://music.leonardini.dev"
+							target="_blank"
+							rel="noreferrer">by myself</a
+						> and with my band <a
+							href="https://papillegustative.com"
+							target="_blank"
+							rel="noreferrer">:Papille Gustative</a
+						>.
+					</p>
+				</div>
 			</div>
-		</div>
 
-		<section class="dark-bg inverted">
-			<div class="container noleft-mobile">
-				<Background />
-			</div>
-		</section>
-
-		<div class="separator"></div>
-		<div>
-			<div class="sticky">
-				<Player client:visible />
-			</div>
-
-			<section class="light-bg">
-				<Works client:idle />
+			<section class="dark-bg inverted">
+				<div class="container noleft-mobile">
+					<Background />
+				</div>
 			</section>
-		</div>
 
-		<div class="separator"></div>
-		<Contacts client:loads />
+			<div class="separator"></div>
+			<div>
+				<div class="sticky">
+					<Player client:visible />
+				</div>
 
-		<section class="dark-bg inverted" style="padding-top: 30px;">
-			<Skills />
-		</section>
+				<section class="light-bg">
+					<Works client:idle />
+				</section>
+			</div>
 
-		<div class="separator"></div>
-		<Synth client:visible />
-		
-	</main>
+			<div class="separator"></div>
+			<Contacts client:loads />
 
-	<footer class="text-section">
-		<div>
-			Made from scratch with 🎸 using <a href="https://astro.build" target="_blank" rel="noreferrer">Astro</a> and <a href="https://svelte.dev" target="_blank" rel="noreferrer">Svelte</a> components. Read the <a href="https://github.com/LorenzoLeonardini/leonardini.dev" target="_blank" rel="noreferrer">source</a>.
-		</div>
-		<div>
-			P.IVA: 02815410994
-		</div>
-	</footer>
-</body>
+			<section class="dark-bg inverted" style="padding-top: 30px;">
+				<Skills />
+			</section>
+
+			<div class="separator"></div>
+			<Synth client:visible />
+		</main>
+
+		<footer class="text-section">
+			<div>
+				Made from scratch with 🎸 using <a
+					href="https://astro.build"
+					target="_blank"
+					rel="noreferrer">Astro</a
+				> and <a href="https://svelte.dev" target="_blank" rel="noreferrer">Svelte</a> components. Read
+				the <a
+					href="https://github.com/LorenzoLeonardini/leonardini.dev"
+					target="_blank"
+					rel="noreferrer">source</a
+				>.
+			</div>
+			<div>P.IVA: 02815410994</div>
+		</footer>
+	</body>
 </html>

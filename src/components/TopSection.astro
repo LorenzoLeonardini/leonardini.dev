@@ -1,6 +1,7 @@
 ---
-import Graph from '../components/Graph.svelte';
+import Graph from '../components/Graph.svelte'
 ---
+
 <style lang="scss">
 	#top-section {
 		position: relative;
@@ -25,9 +26,9 @@ import Graph from '../components/Graph.svelte';
 				margin-top: 4em;
 
 				padding: 1.3em 2.5em;
-				
+
 				background: var(--darker-blue);
-				border: solid 1px rgba(240, 240, 240, .2);
+				border: solid 1px rgba(240, 240, 240, 0.2);
 
 				#name {
 					font-size: 3em;
@@ -37,17 +38,17 @@ import Graph from '../components/Graph.svelte';
 
 				.info ul {
 					margin-top: 2em;
-					font-size: .9em;
+					font-size: 0.9em;
 					list-style-type: none;
 					padding: 0;
 
 					li {
-						margin: .8em 0;
-						color: rgba(240, 240, 240, .6);
+						margin: 0.8em 0;
+						color: rgba(240, 240, 240, 0.6);
 
 						&::before {
 							content: '>';
-							margin-right: .9em;
+							margin-right: 0.9em;
 						}
 					}
 				}
@@ -136,21 +137,37 @@ import Graph from '../components/Graph.svelte';
 	<div class="container">
 		<div class="left">
 			<div class="card" id="info">
-				<h1 id="name">
-					Lorenzo Leonardini
-				</h1>
+				<h1 id="name">Lorenzo Leonardini</h1>
 				<div class="info">
 					<ul>
-						<li><a href="https://github.com/LorenzoLeonardini" target="_blank" rel="noreferrer">github.com/LorenzoLeonardini</a></li>
-						<li><a href="https://linkedin.com/in/lorenzoleonardini" target="_blank" rel="noreferrer">linkedin.com/in/lorenzoleonardini</a></li>
-						<li><a href="https://twitter.com/_lorenzo_leo" target="_blank" rel="noreferrer">twitter.com/_lorenzo_leo</a></li>
+						<li>
+							<a href="https://github.com/LorenzoLeonardini" target="_blank" rel="noreferrer"
+								>github.com/LorenzoLeonardini</a
+							>
+						</li>
+						<li>
+							<a href="https://linkedin.com/in/lorenzoleonardini" target="_blank" rel="noreferrer"
+								>linkedin.com/in/lorenzoleonardini</a
+							>
+						</li>
+						<li>
+							<a href="https://twitter.com/_lorenzo_leo" target="_blank" rel="noreferrer"
+								>twitter.com/_lorenzo_leo</a
+							>
+						</li>
 						<li><span class="blinking cursor"></span></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="right">
-			<img id="propic" src="/assets/person_small.jpg" alt="Lorenzo Leonardini's photograph" height="100%" width="100%">
+			<img
+				id="propic"
+				src="/assets/person_small.jpg"
+				alt="Lorenzo Leonardini's photograph"
+				height="100%"
+				width="100%"
+			/>
 		</div>
 	</div>
 	<Graph client:visible />

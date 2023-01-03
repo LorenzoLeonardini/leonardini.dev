@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Lazyload from './Lazyload.svelte';
+	import Lazyload from './Lazyload.svelte'
 </script>
 
 <style lang="scss">
@@ -24,12 +24,12 @@
 		.name {
 			font-size: 1.2em;
 			font-weight: 700;
-			margin-top: .4em;
+			margin-top: 0.4em;
 		}
-			
+
 		.description {
-			font-size: .9em;
-			margin-top: .4em;
+			font-size: 0.9em;
+			margin-top: 0.4em;
 			height: 10ch;
 		}
 
@@ -41,7 +41,7 @@
 		& :global(img) {
 			width: 100%;
 			height: auto;
-			border: solid 1px rgba(240,240,240,.6);
+			border: solid 1px rgba(240, 240, 240, 0.6);
 		}
 
 		& + .work-element {
@@ -57,7 +57,7 @@
 			margin-right: auto;
 
 			& :global(img) {
-				border: solid 1px rgba(32,32,32,.6);
+				border: solid 1px rgba(32, 32, 32, 0.6);
 			}
 		}
 	}
@@ -94,47 +94,88 @@
 
 		<div class="work-element">
 			<div class="image">
-				<a href="https://yaav.leonardini.dev" target="_blank" rel="noreferrer"><Lazyload src="/assets/yaav.jpg" alt="YAAV - Yet Another Algorithm Visualizer" height="283" width="100%" /></a>
+				<a href="https://yaav.leonardini.dev" target="_blank" rel="noreferrer"
+					><Lazyload
+						src="/assets/yaav.jpg"
+						alt="YAAV - Yet Another Algorithm Visualizer"
+						height="283"
+						width="100%" /></a>
 			</div>
 			<div class="name">YAAV - Yet Another Algorithm Visualizer</div>
-			<div class="description">(In progress) My own take at an algorithm visualizer, built with collaboration and expansion in mind. Aiming not only at sorting and graph algorithms, but also computer vision, search, games and many others.</div>
+			<div class="description">
+				(In progress) My own take at an algorithm visualizer, built with collaboration and expansion
+				in mind. Aiming not only at sorting and graph algorithms, but also computer vision, search,
+				games and many others.
+			</div>
 		</div>
 
 		<div class="work-element">
 			<div class="image">
-				<Lazyload src="/assets/overdrive.jpg" alt="PCB layout of an overdrive pedal" height="283" width="100%" />
+				<Lazyload
+					src="/assets/overdrive.jpg"
+					alt="PCB layout of an overdrive pedal"
+					height="283"
+					width="100%" />
 			</div>
 			<div class="name">Analog Electronics</div>
-			<div class="description">While it's not open source (not yet anyway), I like to study and fiddle with analog circuits, especially related to audio signal chains and effetcs, such as guitar pedals. I "design", plan, solder and build everything, from the PCB to the enclosure. I'm not always sure what I'm doing, though.</div>
+			<div class="description">
+				While it's not open source (not yet anyway), I like to study and fiddle with analog
+				circuits, especially related to audio signal chains and effetcs, such as guitar pedals. I
+				"design", plan, solder and build everything, from the PCB to the enclosure. I'm not always
+				sure what I'm doing, though.
+			</div>
 		</div>
 
 		<div class="work-element">
 			<div class="image">
-				<Lazyload src="/assets/felpe.jpg" alt="Screenshot of a web platform for ordering sweaters" height="283" width="100%" />
+				<Lazyload
+					src="/assets/felpe.jpg"
+					alt="Screenshot of a web platform for ordering sweaters"
+					height="283"
+					width="100%" />
 			</div>
 			<div class="name">Web platforms</div>
-			<div class="description">I develop web platform for various scopes, such as school events (with associated bookings) and school merchandise (t-shirts and sweaters orders).</div>
+			<div class="description">
+				I develop web platform for various scopes, such as school events (with associated bookings)
+				and school merchandise (t-shirts and sweaters orders).
+			</div>
 		</div>
-
 	</div>
 	<div class="right">
 		<h2>&nbsp;</h2>
 
 		<div class="work-element">
 			<div class="image">
-				<a href="https://papillegustative.com" target="_blank" rel="noreferrer"><Lazyload src="/assets/papille.jpg" alt="Screenshot of my band's website" height="283" width="100%" /></a>
+				<a href="https://papillegustative.com" target="_blank" rel="noreferrer"
+					><Lazyload
+						src="/assets/papille.jpg"
+						alt="Screenshot of my band's website"
+						height="283"
+						width="100%" /></a>
 			</div>
 			<div class="name">:Papille Gustative</div>
-			<div class="description">My musical interests and hackiness come together when I manage every technical aspect of my band. Other than the website, I'm planning MIDI and DMX softwares to controls our live shows.</div>
+			<div class="description">
+				My musical interests and hackiness come together when I manage every technical aspect of my
+				band. Other than the website, I'm planning MIDI and DMX softwares to controls our live
+				shows.
+			</div>
 		</div>
 
 		<div class="work-element">
 			<div class="image">
-				<a href="https://music.leonardini.dev" target="_blank" rel="noreferrer"><Lazyload src="/assets/music.jpg" alt="Screenshot of my music page" height="283" width="100%" /></a>
+				<a href="https://music.leonardini.dev" target="_blank" rel="noreferrer"
+					><Lazyload
+						src="/assets/music.jpg"
+						alt="Screenshot of my music page"
+						height="283"
+						width="100%" /></a>
 			</div>
 			<div class="name">Music</div>
-			<div class="description">After years of playing musical instruments, recently I've decided to start composing, arranging and producing my personal stuff. I also do non-critical mixing and mastering for my band.</div>
+			<div class="description">
+				After years of playing musical instruments, recently I've decided to start composing,
+				arranging and producing my personal stuff. I also do non-critical mixing and mastering for
+				my band.
+			</div>
 		</div>
-
 	</div>
 </div>
