@@ -148,11 +148,24 @@
 
 <div class="background-elements-container">
 	<div class="background-element">
+		<div class="date">2022-present</div>
+		<div class="title">CyberSecurity Consultant & Developer</div>
+		<div class="description">
+			I'm currently working as a freelance cybersecurity consultant and developer, performing VAPT
+			and WAPT activities, developing web applications, mainly using Svelte, and <a
+				href="https://hub.docker.com/r/cybersecnatlab/challenge-headless"
+				target="_blank"
+				rel="noreferrer noopener">tools</a> for Capture the Flag (CTF) competitions.
+		</div>
+	</div>
+
+	<div class="background-element">
 		<div class="date">2019-present</div>
 		<div class="title">University of Pisa</div>
 		<div class="description">
-			After getting my Bachelor's degree, I'm currently studying to get my Master's degree in
-			Computer Science.
+			After getting my Bachelor's degree, with a thesis titled <em
+				>Practical comparison of E2EE algorithms of instant messaging app</em
+			>, I'm currently studying to get my Master's degree in Computer Science.
 		</div>
 	</div>
 

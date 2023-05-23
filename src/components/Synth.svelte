@@ -12,9 +12,7 @@
 	let midiAccess: WebMidi.MIDIAccess = null
 
 	$: {
-		console.log(`Selected ${midi_device?.name}`)
 		if (old_midi_device != null) {
-			console.log(`Deselected ${old_midi_device?.name}`)
 			old_midi_device.onmidimessage = null
 		}
 		if (midi_device) {
