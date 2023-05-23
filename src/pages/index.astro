@@ -12,7 +12,7 @@ import '../style/global.scss'
 const title = 'Lorenzo Leonardini'
 const description = 'Profile page of a self-taught developer. Portfolio, skills and contacts'
 const url = 'https://leonardini.dev'
-const image = `${url}/assets/person.jpeg`
+const image = `${url}/assets/person.webp`
 ---
 
 <html lang="en">
@@ -24,21 +24,21 @@ const image = `${url}/assets/person.jpeg`
 		<meta name="theme-color" content="#1A181B" />
 
 		<!-- SEO -->
-		<meta name="description" content="{description}" />
-		<link rel="canonical" href="{url}" />
+		<meta name="description" content={description} />
+		<link rel="canonical" href={url} />
 		<meta name="robots" content="index, follow" />
 		<!-- Open Graph -->
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="{title}" />
-		<meta property="og:description" content="{description}" />
-		<meta property="og:image" content="{image}" />
-		<meta property="og:url" content="{url}" />
-		<meta property="og:site_name" content="{title}" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+		<meta property="og:url" content={url} />
+		<meta property="og:site_name" content={title} />
 		<!-- Twitter Cards -->
-		<meta property="twitter:title" content="{title}" />
-		<meta property="twitter:description" content="{description}" />
-		<meta property="twitter:image" content="{image}" />
-		<meta property="twitter:url" content="{url}" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={image} />
+		<meta property="twitter:url" content={url} />
 		<meta property="twitter:creator" content="@_lorenzo_leo" />
 
 		<style>
