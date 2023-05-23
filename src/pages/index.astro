@@ -2,7 +2,7 @@
 import TopSection from '../components/TopSection.astro'
 import Works from '../components/Works.svelte'
 import Skills from '../components/Skills.svelte'
-import Contacts from '../components/Contacts.astro'
+import Contacts from '../components/Contacts.svelte'
 import Synth from '../components/Synth.svelte'
 import Player from '../components/Player.svelte'
 import Background from '../components/Background.svelte'
@@ -108,7 +108,7 @@ const image = `${url}/assets/person.webp`
 			</div>
 
 			<div class="separator"></div>
-			<Contacts client:loads />
+			<Contacts client:load />
 
 			<section class="dark-bg inverted" style="padding-top: 30px;">
 				<Skills />

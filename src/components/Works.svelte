@@ -39,8 +39,6 @@
 		}
 
 		& :global(img) {
-			width: 100%;
-			height: auto;
 			border: solid 1px rgba(240, 240, 240, 0.6);
 		}
 
@@ -96,10 +94,10 @@
 			<div class="image">
 				<a href="https://yaav.leonardini.dev" target="_blank" rel="noreferrer"
 					><Lazyload
-						src="/assets/yaav.jpg"
+						src="/assets/yaav.webp"
 						alt="YAAV - Yet Another Algorithm Visualizer"
 						height="283"
-						width="100%" /></a>
+						width="400" /></a>
 			</div>
 			<div class="name">YAAV - Yet Another Algorithm Visualizer</div>
 			<div class="description">
@@ -112,10 +110,10 @@
 		<div class="work-element">
 			<div class="image">
 				<Lazyload
-					src="/assets/overdrive.jpg"
+					src="/assets/overdrive.webp"
 					alt="PCB layout of an overdrive pedal"
 					height="283"
-					width="100%" />
+					width="400" />
 			</div>
 			<div class="name">Analog Electronics</div>
 			<div class="description">
@@ -129,10 +127,10 @@
 		<div class="work-element">
 			<div class="image">
 				<Lazyload
-					src="/assets/felpe.jpg"
+					src="/assets/felpe.webp"
 					alt="Screenshot of a web platform for ordering sweaters"
 					height="283"
-					width="100%" />
+					width="400" />
 			</div>
 			<div class="name">Web platforms</div>
 			<div class="description">
@@ -148,10 +146,10 @@
 			<div class="image">
 				<a href="https://papillegustative.com" target="_blank" rel="noreferrer"
 					><Lazyload
-						src="/assets/papille.jpg"
+						src="/assets/papille.webp"
 						alt="Screenshot of my band's website"
 						height="283"
-						width="100%" /></a>
+						width="400" /></a>
 			</div>
 			<div class="name">:Papille Gustative</div>
 			<div class="description">
@@ -165,10 +163,10 @@
 			<div class="image">
 				<a href="https://music.leonardini.dev" target="_blank" rel="noreferrer"
 					><Lazyload
-						src="/assets/music.jpg"
+						src="/assets/music.webp"
 						alt="Screenshot of my music page"
 						height="283"
-						width="100%" /></a>
+						width="400" /></a>
 			</div>
 			<div class="name">Music</div>
 			<div class="description">

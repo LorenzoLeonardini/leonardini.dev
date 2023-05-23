@@ -279,7 +279,7 @@
 <div class="player-container" class:small="{small}">
 	<div class="container-fluid">
 		<img
-			src="/assets/alone_in_space.jpg"
+			src="/assets/alone_in_space.webp"
 			alt="Alone in Space album cover"
 			class="album-cover"
 			width="150"

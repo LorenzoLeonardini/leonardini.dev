@@ -5,4 +5,11 @@
 	export let alt: string
 </script>
 
+<style>
+	img {
+		width: 100%;
+		height: auto;
+	}
+</style>
+
 <img loading="lazy" src="{src}" alt="{alt}" width="{width}" height="{height}" />
