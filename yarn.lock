@@ -728,7 +728,7 @@
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.10.tgz#04ffa7f406ab628f7f7e97ca23e290cd8ab15efc"
   integrity sha512-IfYcSBWE3hLpBg8+X2SEa8LVkJdJEkT2Ese2aaLs3ptGdVtABxndrMaxuFlQ1qdFf9Q5rDvDpxI3WwgvKFAsQA==
 
-"@types/webmidi@^2.0.9":
+"@types/webmidi@^2.0.10":
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/@types/webmidi/-/webmidi-2.0.10.tgz#1e0caf9997cb06cdf38a03c2a958d8c5129bbcf0"
   integrity sha512-4RmTFMB6mN2h8XbJa1x3cOs9IOkXvFyHGcPUpUvWfmATuKg/J+dsFiMVgCE2EkpS+/8a8AP2tE3rQT1mLG7vEg==
@@ -1773,12 +1773,12 @@ jsonc-parser@^3.2.0:
   resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.2.0.tgz#31ff3f4c2b9793f89c67212627c51c6394f88e76"
   integrity sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==
 
-jzz@^1.7.0:
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/jzz/-/jzz-1.7.4.tgz#3567e6d9babc069bd17e5ecec648893fadec9331"
-  integrity sha512-Q66OuEauPKImGF/CibsWI/02IEHmoZpAbEq6OcPaz4sihJwmt0J+9gWywudcdD+19cfmekl2I9NsVqlde/Phww==
+jzz@^1.7.8:
+  version "1.7.8"
+  resolved "https://registry.yarnpkg.com/jzz/-/jzz-1.7.8.tgz#2d434045d35ec23930c8b90ce709edaea47ff63a"
+  integrity sha512-hUEZEoToKylHJIupHwhdGrcIggOGjUYdAxWHBezFwXA4EFW/iokiVaD2CH4/NVqe7reRxLJPSV5JkfMEzx1S7w==
   dependencies:
-    "@types/webmidi" "^2.0.9"
+    "@types/webmidi" "^2.0.10"
     jazz-midi "^1.7.9"
 
 kind-of@^6.0.0, kind-of@^6.0.2:
@@ -2795,9 +2795,9 @@ sass-formatter@^0.7.5:
     suf-log "^2.5.3"
 
 sass@^1.54.0:
-  version "1.69.5"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.69.5.tgz#23e18d1c757a35f2e52cc81871060b9ad653dfde"
-  integrity sha512-qg2+UCJibLr2LCVOt3OlPhr/dqVHWOa9XtZf2OjbLs/T4VPSJ00udtgJxH3neXZm+QqX8B+3cU7RaLqp1iVfcQ==
+  version "1.70.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.70.0.tgz#761197419d97b5358cb25f9dd38c176a8a270a75"
+  integrity sha512-uUxNQ3zAHeAx5nRFskBnrWzDUJrrvpCPD5FNAoRvTi0WwremlheES3tg+56PaVtCs5QDRX5CBLxxKMDJMEa1WQ==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
@@ -3324,11 +3324,11 @@ wcwidth@^1.0.1:
     defaults "^1.0.3"
 
 web-midi-api@^2.1.1:
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/web-midi-api/-/web-midi-api-2.2.6.tgz#a29a08a50046c78ce072f0127e9cfe5f671ceab5"
-  integrity sha512-BD6zoWSvFPM0QVH6I0g8+jQI+cWW7kplm4Dn+0rX0hXevcqqKJm0vkvMxjVYCyody9BgrmmBCYB+cz0QvR35tw==
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/web-midi-api/-/web-midi-api-2.2.8.tgz#3a3cfb19276799bdbd6a0a270a7e9b16df6e6b9f"
+  integrity sha512-SsrE0Lrdwmp/B5PmzvFKGnjLOetqUrBP0OscOyGOfJlUiZo08klknWq1QS3OSDEwp9RH8LQd5x92/XEQ34F5Gw==
   dependencies:
-    jzz "^1.7.0"
+    jzz "^1.7.8"
 
 web-namespaces@^2.0.0:
   version "2.0.1"
