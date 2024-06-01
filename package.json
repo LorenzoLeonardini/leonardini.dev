@@ -11,17 +11,17 @@
 		"preview": "astro preview"
 	},
 	"dependencies": {
-		"@astrojs/sitemap": "^3.1.4",
+		"@astrojs/sitemap": "^3.1.5",
 		"@astrojs/svelte": "^5.4.0",
-		"astro": "^4.7.1",
-		"sass": "^1.77.0",
-		"svelte": "^4.2.16",
+		"astro": "^4.9.2",
+		"sass": "^1.77.4",
+		"svelte": "^4.2.17",
 		"typescript": "^5.4.5",
-		"web-midi-api": "^2.3.0"
+		"web-midi-api": "^2.3.1"
 	},
 	"devDependencies": {
 		"prettier": "^3.2.5",
-		"prettier-plugin-astro": "^0.13.0",
+		"prettier-plugin-astro": "^0.14.0",
 		"prettier-plugin-svelte": "^3.2.3"
 	}
 }
